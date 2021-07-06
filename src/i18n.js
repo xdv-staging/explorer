@@ -1,6 +1,19 @@
 import i18n from 'i18next';
-import XHR from 'i18next-xhr-backend';
 import languageDetector from './languageDetector';
+import './locales/en-US/translations.json';
+
+const backendOptions = {
+  type: 'backend',
+  read(language, namespace, callback) {
+    import(`./locales/${language}.json`)
+      .then(resources => {
+        callback(null, resources[namespace]);
+      })
+      .catch(error => {
+        callback(error, null);
+      });
+  }
+};
 
 const options = {
   debug: process.env.NODE_ENV === 'development',
@@ -15,14 +28,11 @@ const options = {
   react: {
     wait: true
   },
-  backend: {
-    loadPath: '/locales/{{lng}}/{{ns}}.json'
-  },
   load: 'currentOnly'
 };
 
 i18n
-  .use(XHR)
+  .use(backendOptions)
   .use(languageDetector)
   .init(options);
 
