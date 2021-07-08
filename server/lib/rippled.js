@@ -329,6 +329,7 @@ module.exports.getOffers = (currencyCode, issuerAddress, pairCurrencyCode, pairI
 };
 
 module.exports.getHealth = async () => {
+  console.log(URL_HEALTH);
   return axios.get(URL_HEALTH).catch(error => {
     if (error.response) {
       throw new utils.Error(error.response.data, error.response.status);
