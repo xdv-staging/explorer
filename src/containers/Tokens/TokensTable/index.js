@@ -112,6 +112,11 @@ const TokensTable = props => {
       });
   }, [allTokens]);
 
+  useEffect(() => {
+    console.log(JSON.stringify(tokens), isError, isLoading);
+    setIsLoading(false);
+  }, [tokens]);
+
   function renderNoTokens() {
     return <div className="empty-tokens-message">{t('no_tokens_message')}</div>;
   }

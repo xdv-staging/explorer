@@ -151,7 +151,10 @@ export const getLocalizedCurrencySymbol = (lang = 'en-US', currency = 'USD') => 
   return formatted.split('1')[0].trim();
 };
 
-export const formatLargeNumber = (d = 0, digits = 4) => {
+export const formatLargeNumber = (d = 0) => {
+  let digits = 4;
+  let copy = d;
+  let zeros = 0;
   if (d >= QUADRILLION) {
     return {
       num: (d / QUADRILLION).toFixed(digits),
@@ -185,6 +188,13 @@ export const formatLargeNumber = (d = 0, digits = 4) => {
       num: (d / THOUSAND).toFixed(digits),
       unit: 'K'
     };
+  }
+  while (copy < 1) {
+    zeros += 1;
+    copy *= 10;
+  }
+  while (zeros - 4 < 2) {
+    digits += 2;
   }
 
   return {
