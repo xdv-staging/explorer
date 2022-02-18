@@ -30,16 +30,16 @@ class AccountHeader extends Component {
 
   componentDidMount() {
     const { actions, accountId } = this.props;
-    const rippledUrl = this.context;
-    actions.loadAccountState(accountId, rippledUrl);
+    const rippledSocket = this.context;
+    actions.loadAccountState(accountId, rippledSocket);
   }
 
   componentDidUpdate(prevProps) {
-    const rippledUrl = this.context;
+    const rippledSocket = this.context;
     const { accountId, actions } = this.props;
 
     if (prevProps.accountId !== accountId) {
-      actions.loadAccountState(accountId, rippledUrl);
+      actions.loadAccountState(accountId, rippledSocket);
     }
   }
 
