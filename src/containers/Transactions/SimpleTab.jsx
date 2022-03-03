@@ -7,7 +7,7 @@ import Sequence from '../shared/components/Sequence';
 import Simple from './Simple';
 import './simpleTab.css';
 
-const XRP_BASE = 1000000;
+const _BASE = 1000000;
 const TIME_ZONE = 'UTC';
 const DATE_OPTIONS = {
   hour: 'numeric',
@@ -87,11 +87,11 @@ class SimpleTab extends Component {
   render() {
     const { t, language, data, width } = this.props;
     const { raw } = data;
-    const numberOptions = { ...CURRENCY_OPTIONS, currency: 'XRP' };
+    const numberOptions = { ...CURRENCY_OPTIONS, currency: '' };
     const time = localizeDate(new Date(raw.date), language, DATE_OPTIONS);
     const ledgerIndex = raw.ledger_index;
     const fee = raw.tx.Fee
-      ? localizeNumber(Number.parseFloat(raw.tx.Fee) / XRP_BASE, language, numberOptions)
+      ? localizeNumber(Number.parseFloat(raw.tx.Fee) / _BASE, language, numberOptions)
       : 0;
 
     let rowIndex;

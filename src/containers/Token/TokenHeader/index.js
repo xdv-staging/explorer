@@ -12,7 +12,7 @@ import { localizeNumber, formatLargeNumber } from '../../shared/utils';
 
 const CURRENCY_OPTIONS = {
   style: 'currency',
-  currency: 'XRP',
+  currency: 'XDV',
   minimumFractionDigits: 2,
   maximumFractionDigits: 6,
 };
@@ -88,10 +88,10 @@ class TokenHeader extends Component {
     const { data } = this.props;
     const { flags } = data;
 
-    const rippling = flags && flags.includes('lsfDefaultRipple') ? 'enabled' : 'disabled';
+    const rippling = flags && flags.includes('lsfDefaultDivvy') ? 'enabled' : 'disabled';
     const depositAuth = flags && flags.includes('lsfDepositAuth') ? 'enabled' : 'disabled';
     const masterKey = flags && flags.includes('lsfDisableMaster') ? 'disabled' : 'enabled';
-    const receivingXRP = flags && flags.includes('lsfDisallowXRP') ? 'disabled' : 'enabled';
+    const receivingXDV = flags && flags.includes('lsfDisallowXDV') ? 'disabled' : 'enabled';
     const frozen = flags && flags.includes('lsfGlobalFreeze') ? 'true' : 'false';
     const noFreeze = flags && flags.includes('lsfNoFreeze') ? 'true' : 'false';
     const requireAuth = flags && flags.includes('lsfRequireAuth') ? 'true' : 'false';
@@ -113,8 +113,8 @@ class TokenHeader extends Component {
             <td className="col2">{masterKey}</td>
           </tr>
           <tr className="row">
-            <td className="col1">Receiving XRP</td>
-            <td className="col2">{receivingXRP}</td>
+            <td className="col1">Receiving XDV</td>
+            <td className="col2">{receivingXDV}</td>
           </tr>
           <tr className="row">
             <td className="col1">Frozen</td>
@@ -148,7 +148,7 @@ class TokenHeader extends Component {
       <div className="section header-container">
         <div className="info-container">
           <div className="values">
-            <div className="title">{t('accounts.xrp_balance')}</div>
+            <div className="title">{t('accounts.xdv_balance')}</div>
             <div className="value">{currencyBalance}</div>
           </div>
           <div className="values">

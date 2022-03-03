@@ -29,7 +29,7 @@ const render = (t, language, action, node, index) => {
   const line1 = (
     <Trans i18nKey="transaction_balance_line_one">
       It {action} a <b>{currency}</b>
-      ripplestate node between
+      divvystate node between
       <Account account={account} />
       and
       <Account account={counterAccount} />
@@ -52,7 +52,7 @@ const render = (t, language, action, node, index) => {
   ) : null;
 
   return (
-    <li key={`ripple_state_${action}_${index}`} className="meta-line">
+    <li key={`divvy_state_${action}_${index}`} className="meta-line">
       {line1}
       {line2}
     </li>

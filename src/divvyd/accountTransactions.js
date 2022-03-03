@@ -10,10 +10,10 @@ import {
   isValidClassicAddress,
   isValidXAddress,
   xAddressToClassicAddress,
-} from 'ripple-address-codec';
+} from 'divvy-address-codec';
 
 import { formatTransaction } from './lib/utils';
-import { getAccountTransactions as getAccountTxs } from './lib/rippled';
+import { getAccountTransactions as getAccountTxs } from './lib/divvyd';
 import summarize from './lib/txSummary';
 import logger from './lib/logger';
 

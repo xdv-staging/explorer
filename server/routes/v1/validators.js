@@ -9,7 +9,7 @@ const fetchValidators = () =>
     .then(response => response.data.validators);
 
 const fetchDomains = () =>
-  axios.get('https://data.ripple.com/v2/network/validators').then(response => {
+  axios.get('https://data.xdv.io/v2/network/validators').then(response => {
     response.data.validators.forEach(d => {
       if (d.domain) {
         const validator = cache.validators.find(v => v.master_key === d.validation_public_key);

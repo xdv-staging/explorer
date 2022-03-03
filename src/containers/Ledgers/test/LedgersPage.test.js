@@ -13,8 +13,8 @@ import ledgerMessage from './mock/ledger.json';
 import validationMessage from './mock/validation.json';
 import { initialState } from '../../../rootReducer';
 import prevLedgerMessage from './mock/prevLedger.json';
-import moxiosData from './mock/rippled.json';
-import MockResponse from '../../test/mockRippledResponse';
+import moxiosData from './mock/divvyd.json';
+import MockResponse from '../../test/mockDivvydResponse';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -63,7 +63,7 @@ describe('Ledgers Page container', () => {
 
   test('receives messages from streams', async () => {
     const server = new WS(
-      `wss://${process.env.REACT_APP_RIPPLED_HOST}:${process.env.REACT_APP_RIPPLED_WS_PORT}`,
+      `wss://${process.env.REACT_APP_DIVVYD_HOST}:${process.env.REACT_APP_DIVVYD_WS_PORT}`,
       { jsonProtocol: true }
     );
     const wrapper = createWrapper();
@@ -90,7 +90,7 @@ describe('Ledgers Page container', () => {
     });
 
     moxios.stubRequest(
-      `/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`,
+      `/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`,
       new MockResponse(moxiosData)
     );
 

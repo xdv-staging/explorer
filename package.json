@@ -1,6 +1,6 @@
 {
   "name": "explorer",
-  "description": "XRPL Data Visualization",
+  "description": "XDVL Data Visualization",
   "version": "1.5.0",
   "dependencies": {
     "@google-cloud/bigquery": "^5.5.0",
@@ -45,7 +45,7 @@
     "redux-persist": "^5.9.1",
     "redux-thunk": "^2.2.0",
     "rewire": "^6.0.0",
-    "ripple-address-codec": "^4.1.2",
+    "divvy-address-codec": "^4.1.3",
     "topojson-client": "^3.0.0",
     "typeface-roboto": "0.0.54",
     "ws": "^7.4.2",

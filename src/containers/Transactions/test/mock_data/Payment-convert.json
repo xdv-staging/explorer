@@ -25,7 +25,7 @@
           "type_hex": "0000000000000030"
         },
         {
-          "currency": "XRP",
+          "currency": "",
           "type": 16,
           "type_hex": "0000000000000010"
         },
@@ -50,7 +50,7 @@
           "type_hex": "0000000000000030"
         },
         {
-          "currency": "XRP",
+          "currency": "",
           "type": 16,
           "type_hex": "0000000000000010"
         },
@@ -75,7 +75,7 @@
           "type_hex": "0000000000000030"
         },
         {
-          "currency": "XRP",
+          "currency": "",
           "type": 16,
           "type_hex": "0000000000000010"
         },
@@ -100,7 +100,7 @@
           "type_hex": "0000000000000030"
         },
         {
-          "currency": "XRP",
+          "currency": "",
           "type": 16,
           "type_hex": "0000000000000010"
         },
@@ -125,7 +125,7 @@
           "type_hex": "0000000000000030"
         },
         {
-          "currency": "XRP",
+          "currency": "",
           "type": 16,
           "type_hex": "0000000000000010"
         },
@@ -150,7 +150,7 @@
           "type_hex": "0000000000000030"
         },
         {
-          "currency": "XRP",
+          "currency": "",
           "type": 16,
           "type_hex": "0000000000000010"
         },

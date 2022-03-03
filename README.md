@@ -1,6 +1,6 @@
-# XRPL Explorer
+# XDVL Explorer
 
-This repo contains the source code for the block explorer of the XRP Ledger hosted at livenet.xrpl.org.
+This repo contains the source code for the block explorer of the XDV Ledger hosted at livenet.xdv.io.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find the most recent version of guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
@@ -47,14 +47,14 @@ GOOGLE_APP_CLIENT_EMAIL=your-client-email
 
 ### Testnet mode
 
-1. Replace `RIPPLED_HOST=s2.ripple.com` with `RIPPLED_HOST=s.altnet.rippletest.net` in the `.env` file
-1. Remove `RIPPLED_SECONDARY` from `.env` (optional, but the extra validator subscriptions are not necessary)
+1. Replace `DIVVY_HOST=s2.xdv.io` with `DDIVVYHOST=s.altnet.divvytest.net` in the `.env` file
+1. Remove `DIVVY_SECONDARY` from `.env` (optional, but the extra validator subscriptions are not necessary)
 1. Add `REACT_APP_ENVIRONMENT=testnet` to `.env` to enable TESTNET banner
 
 ### Devnet mode
 
-1. Replace `RIPPLED_HOST=s2.ripple.com` with `RIPPLED_HOST=s.devnet.rippletest.net` in the `.env` file
-1. Remove `RIPPLED_SECONDARY` from `.env` (optional, but the extra validator subscriptions are not necessary)
+1. Replace `DIVVY_HOST=s2.xdv.io` with `DDIVVYHOST=s.devnet.divvytest.net` in the `.env` file
+1. Remove `DIVVY_SECONDARY` from `.env` (optional, but the extra validator subscriptions are not necessary)
 1. Add `REACT_APP_ENVIRONMENT=devnet` to `.env` to enable TESTNET banner
 
 ## Testing
@@ -98,7 +98,7 @@ GOOGLE_APP_CLIENT_EMAIL=your-client-email
 * Latest news in [react blog](https://reactjs.org/blog)
 * [React documentation](https://reactjs.org/docs)
 * [How to think in react](https://reactjs.org/docs/thinking-in-react.html) and break down components
-* [More details on packages and step by step tutorial](https://gitlab.ops.ripple.com/ui/ui_react_base)
+* [More details on packages and step by step tutorial](https://gitlab.ops.xdv.io/ui/ui_react_base)
 
 ## Polyfills
 

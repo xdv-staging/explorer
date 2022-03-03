@@ -15,13 +15,13 @@ const CURRENCY_ORDER = [
   'BTC',
   'XAG',
   'XAU',
-  'XRP',
+  '',
 ];
 
 module.exports = tx => {
   const gets = formatAmount(tx.TakerGets);
-  const base = tx.TakerGets.currency || 'XRP';
-  const counter = tx.TakerPays.currency || 'XRP';
+  const base = tx.TakerGets.currency || '';
+  const counter = tx.TakerPays.currency || '';
   const pays = formatAmount(tx.TakerPays);
   const price = pays.amount / gets.amount;
   const invert = CURRENCY_ORDER.indexOf(counter) > CURRENCY_ORDER.indexOf(base);

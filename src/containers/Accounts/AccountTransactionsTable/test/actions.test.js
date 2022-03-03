@@ -31,7 +31,7 @@ describe('AccountTransactionsTable Actions', () => {
             instructions: {
               amount: {
                 amount: 3.75,
-                currency: 'XRP',
+                currency: 'XDV',
               },
               destination: 'rBWpYJhuJWBPAkzJ4kYQqHShSkkF3rgeD:2471596944',
               max: undefined,
@@ -55,7 +55,7 @@ describe('AccountTransactionsTable Actions', () => {
       { type: actionTypes.ACCOUNT_TRANSACTIONS_LOAD_SUCCESS, data: expectedData },
     ];
     const store = mockStore({ news: initialState });
-    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`, {
+    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`, {
       status: 200,
       response: successfulAccountTx,
     });
@@ -74,7 +74,7 @@ describe('AccountTransactionsTable Actions', () => {
       },
     ];
     const store = mockStore({ news: initialState });
-    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`, {
+    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`, {
       status: 500,
       response: null,
     });

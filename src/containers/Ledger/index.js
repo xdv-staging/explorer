@@ -56,7 +56,7 @@ class Ledger extends Component {
   componentDidMount() {
     const { t, actions, match, data } = this.props;
     const { identifier = '' } = match.params;
-    document.title = `${t('xrpl_explorer')} | ${t('ledger')} ${identifier}`;
+    document.title = `${t('xdvl_explorer')} | ${t('ledger')} ${identifier}`;
     analytics(ANALYTIC_TYPES.pageview, { title: 'Ledger', path: '/ledgers/:id' });
 
     if (Number(identifier) !== data.ledger_index) {
@@ -112,7 +112,7 @@ class Ledger extends Component {
               </div>
               <div className="ledger-col">
                 <div className="title">{t('total_fees')}</div>
-                <div className="value">{formatPrice(data.total_fees, language, 'XRP')}</div>
+                <div className="value">{formatPrice(data.total_fees, language, 'XDV')}</div>
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ class Ledger extends Component {
                   account={account}
                 />
               </div>
-              <div className="col col-fee">{formatPrice(fee, language, 'XRP')}</div>
+              <div className="col col-fee">{formatPrice(fee, language, 'XDV')}</div>
             </div>
             <div className="details">
               <TxDetails language={language} instructions={details.instructions} type={type} />

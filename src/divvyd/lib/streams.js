@@ -1,4 +1,4 @@
-import { getLedger, getServerInfo } from './rippled';
+import { getLedger, getServerInfo } from './divvyd';
 import { summarizeLedger, EPOCH_OFFSET } from './utils';
 import logger from './logger';
 
@@ -49,7 +49,7 @@ const fetchLoadFee = () => {
     .then(result => result.info)
     .then(info => {
       const ledgerFeeInfo = info.validated_ledger;
-      const loadFee = ledgerFeeInfo.base_fee_xrp * (info.load_factor ?? 1);
+      const loadFee = ledgerFeeInfo.base_fee_xdv * (info.load_factor ?? 1);
       return { load_fee: Number(loadFee.toPrecision(4)).toString() };
     });
 };

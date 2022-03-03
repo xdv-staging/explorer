@@ -1,5 +1,5 @@
 FROM node:14
-MAINTAINER Ripple Operations <ops@ripple.com>
+MAINTAINER Divvy Operations <ops@xdv.io>
 
 RUN mkdir /explorer
 ADD . / explorer/

@@ -16,7 +16,7 @@ const PaymentChannelFund = props => {
     channel,
   } = data.instructions;
 
-  const options = { ...CURRENCY_OPTIONS, currency: 'XRP' };
+  const options = { ...CURRENCY_OPTIONS, currency: '' };
   const amt = amount ? localizeNumber(amount.amount, language, options) : null;
   const increaseAmt = increase ? localizeNumber(increase.amount, language, options) : null;
   const totalAmt = total ? localizeNumber(total.amount, language, options) : null;

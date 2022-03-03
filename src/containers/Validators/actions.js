@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLedger } from '../../rippled';
+import { getLedger } from '../../divvyd';
 import { analytics, ANALYTIC_TYPES, SERVER_ERROR } from '../shared/utils';
 import * as actionTypes from './actionTypes';
 

@@ -1,5 +1,5 @@
-import { isValidClassicAddress, isValidXAddress } from 'ripple-address-codec';
-import { getAccountState } from '../../../rippled';
+import { isValidClassicAddress, isValidXAddress } from 'divvy-address-codec';
+import { getAccountState } from '../../../divvyd';
 import { analytics, ANALYTIC_TYPES, BAD_REQUEST } from '../../shared/utils';
 import * as actionTypes from './actionTypes';
 

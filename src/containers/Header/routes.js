@@ -13,8 +13,8 @@ const routesConfig = [
     title: 'tokens',
   },
   {
-    link: 'https://xrpl.org',
-    title: 'xrpl_org',
+    link: 'https://xdv.io',
+    title: 'xdvl_org',
   },
 ];
 

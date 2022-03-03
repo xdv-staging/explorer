@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { encodeNodePublic } from 'ripple-address-codec';
+import { encodeNodePublic } from 'divvy-address-codec';
 
 const UNLModify = props => {
   const { data, t } = props;

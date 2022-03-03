@@ -48,7 +48,7 @@ describe('Validator container', () => {
       domain: 'example.com',
     };
     const wrapper = createWrapper(state);
-    expect(document.title).toBe('Validator example.com | xrpl_explorer');
+    expect(document.title).toBe('Validator example.com | xdvl_explorer');
     wrapper.unmount();
   });
 
@@ -58,7 +58,7 @@ describe('Validator container', () => {
       master_key: 'foo',
     };
     const wrapper = createWrapper(state);
-    expect(document.title).toBe('Validator foo... | xrpl_explorer');
+    expect(document.title).toBe('Validator foo... | xdvl_explorer');
     wrapper.unmount();
   });
 
@@ -68,7 +68,7 @@ describe('Validator container', () => {
       signing_key: 'bar',
     };
     const wrapper = createWrapper(state);
-    expect(document.title).toBe('Validator bar... | xrpl_explorer');
+    expect(document.title).toBe('Validator bar... | xdvl_explorer');
     wrapper.unmount();
   });
 

@@ -23,7 +23,7 @@ class LedgersPage extends Component {
     const { t } = this.props;
     this.fetchValidators();
     this.interval = setInterval(this.fetchValidators, 5 * 60 * 1000);
-    document.title = `${t('xrpl_explorer')} | ${t('ledgers')}`;
+    document.title = `${t('xdvl_explorer')} | ${t('ledgers')}`;
     analytics(ANALYTIC_TYPES.pageview, { title: 'Ledgers', path: '/' });
   }
 

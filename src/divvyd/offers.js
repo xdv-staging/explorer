@@ -1,12 +1,12 @@
 import logger from './lib/logger';
 
-import { getOffers } from './lib/rippled';
+import { getOffers } from './lib/divvyd';
 
 const log = logger({ name: 'offers' });
 
 const getBookOffers = async (currencyCode, issuerAddress, pairCurrencyCode, pairIssuerAddress) => {
   try {
-    // log.info('fetching book offers from rippled');
+    // log.info('fetching book offers from divvyd');
     let orderBook = await getOffers(
       currencyCode,
       issuerAddress,

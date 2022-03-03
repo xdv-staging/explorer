@@ -42,10 +42,10 @@ describe('Header component', () => {
     const wrapper = createWrapper();
     const input = wrapper.find('.search input');
     const ledgerIndex = '123456789';
-    const rippleAddress = 'rGFuMiw48HdbnrUbkRYuitXTmfrDBNTCnX';
+    const divvyAddress = 'dGFuMiw48HrbndUbkRYuitXTmfdDBNTCnX';
     const hash = '59239EA78084F6E2F288473F8AE02F3E6FC92F44BDE59668B5CAE361D3D32838';
-    const token1 = 'cny.rJ1adrpGS3xsnQMb9Cw54tWJVFPuSdZHK';
-    const token2 = '534f4c4f00000000000000000000000000000000.rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz';
+    const token1 = 'cny.dJ1ardpGS3xsnQMb9Cw54tWJVFPuSrZHK';
+    const token2 = '534f4c4f00000000000000000000000000000000.dsoLo2S1kiGeCcn6hCUXVdCpGMWLdRdLZz';
     const invalidString = '123invalid';
 
     input.simulate('keyDown', { key: 'a' });
@@ -55,9 +55,9 @@ describe('Header component', () => {
     input.simulate('keyDown', { key: 'Enter' });
     expect(window.location.pathname).toEqual(`/ledgers/${ledgerIndex}`);
 
-    input.instance().value = rippleAddress;
+    input.instance().value = divvyAddress;
     input.simulate('keyDown', { key: 'Enter' });
-    expect(window.location.pathname).toEqual(`/accounts/${rippleAddress}`);
+    expect(window.location.pathname).toEqual(`/accounts/${divvyAddress}`);
 
     input.instance().value = hash;
     input.simulate('keyDown', { key: 'Enter' });

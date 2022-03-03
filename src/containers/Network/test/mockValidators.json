@@ -7,7 +7,7 @@
     "load_fee": null,
     "partial": false,
     "chain": null,
-    "unl": "vl.ripple.com",
+    "unl": "vl.xdv.io",
     "last_ledger_time": "2019-02-08T22:44:56.000Z",
     "agreement_1hour": {
       "score": 1,
@@ -33,7 +33,7 @@
     "load_fee": null,
     "partial": false,
     "chain": null,
-    "unl": "vl.ripple.com",
+    "unl": "vl.xdv.io",
     "last_ledger_time": "2019-02-08T22:44:56.000Z",
     "agreement_1hour": {
       "score": 1,

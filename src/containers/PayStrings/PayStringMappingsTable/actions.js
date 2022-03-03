@@ -1,4 +1,4 @@
-import { getPayString } from '../../../rippled';
+import { getPayString } from '../../../divvyd';
 import { analytics, ANALYTIC_TYPES } from '../../shared/utils';
 import * as actionTypes from './actionTypes';
 

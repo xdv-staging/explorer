@@ -1,5 +1,5 @@
 import { summarizeLedger } from './lib/utils';
-import { getLedger as getRippledLedger } from './lib/rippled';
+import { getLedger as getDivvydLedger } from './lib/divvyd';
 import logger from './lib/logger';
 
 const log = logger({ name: 'ledgers' });
@@ -19,7 +19,7 @@ const getLedger = identifier => {
 
   log.info(`get ledger: ${JSON.stringify(parameters)}`);
 
-  return getRippledLedger(parameters)
+  return getDivvydLedger(parameters)
     .then(ledger => summarizeLedger(ledger, true))
     .then(data => {
       return data;

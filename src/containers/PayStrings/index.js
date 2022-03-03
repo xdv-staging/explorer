@@ -16,7 +16,7 @@ ERROR_MESSAGES[NOT_FOUND] = {
   hints: ['check_account_id'],
 };
 ERROR_MESSAGES[BAD_REQUEST] = {
-  title: 'invalid_xrpl_address',
+  title: 'invalid_xdvl_address',
   hints: ['check_account_id'],
 };
 ERROR_MESSAGES.default = {
@@ -63,7 +63,7 @@ class PayString extends Component {
     const accountId = match.params.id || '';
     const showError = accountId === prevId && error;
 
-    document.title = `${t('xrpl_explorer')} | ${accountId.substr(0, 24)}${
+    document.title = `${t('xdvl_explorer')} | ${accountId.substr(0, 24)}${
       accountId.length > 24 ? '...' : ''
     }`;
 

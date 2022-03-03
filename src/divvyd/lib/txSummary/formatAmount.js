@@ -6,6 +6,6 @@ module.exports = d =>
         amount: Number(d.value),
       }
     : {
-        currency: 'XRP',
+        currency: '',
         amount: d / 1000000,
       };

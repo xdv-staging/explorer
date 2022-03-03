@@ -6,7 +6,7 @@ import {
   isValidClassicAddress,
   isValidXAddress,
   classicAddressToXAddress,
-} from 'ripple-address-codec';
+} from 'divvy-address-codec';
 import { isValidPayId as isValidPayString } from 'payid-lib';
 import {
   analytics,

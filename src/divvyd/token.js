@@ -1,16 +1,16 @@
 import logger from './lib/logger';
 import { formatAccountInfo } from './lib/utils';
-import { getBalances, getAccountInfo, getServerInfo } from './lib/rippled';
+import { getBalances, getAccountInfo, getServerInfo } from './lib/divvyd';
 
 const log = logger({ name: 'iou' });
 
 const getToken = async (currencyCode, issuer) => {
   try {
-    log.info('fetching account info from rippled');
+    log.info('fetching account info from divvyd');
     const accountInfo = await getAccountInfo(issuer);
     const serverInfo = await getServerInfo();
 
-    log.info('fetching gateway_balances from rippled');
+    log.info('fetching gateway_balances from divvyd');
     const balances = await getBalances(issuer);
     const obligations = balances?.obligations && balances.obligations[currencyCode.toUpperCase()];
     if (!obligations) {

@@ -143,7 +143,7 @@ class NodesTable extends Component {
             <th className="pubkey">{t('node_pubkey')}</th>
             <th className="ip">{t('ip')}</th>
             <th className="server-state center">{t('state')}</th>
-            <th className="version">{t('rippled_version')}</th>
+            <th className="version">{t('divvyd_version')}</th>
             <th className="last-ledger">{t('last_ledger')}</th>
             <th className="uptime">{t('uptime')}</th>
             <th className="peers right">{t('peers')}</th>

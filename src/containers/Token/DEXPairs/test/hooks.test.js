@@ -6,7 +6,7 @@ import i18n from '../../../../i18nTestConfig';
 import DEXPairs from '../index';
 import mockTopEndpoint from './mockTopEndpoint.json';
 import mockExchangeData from './mockExchangeData.json';
-import BaseMockResponse from '../../../test/mockRippledResponse';
+import BaseMockResponse from '../../../test/mockDivvydResponse';
 
 const address = 'rHEQnRvqWccQALFfpG3YuoxxVyhDZnF4TS';
 const currency = 'USD';
@@ -26,7 +26,7 @@ class MockResponse extends BaseMockResponse {
     const postParams = JSON.parse(request.config.data);
     const { taker_pays: takerPays } = postParams.options.params[0];
     const token = `${takerPays.currency}.${takerPays.issuer}`;
-    const tokenName = takerPays.currency === 'XRP' ? 'XRP' : token;
+    const tokenName = takerPays.currency === 'XDV' ? 'XDV' : token;
     return this.moxiosData[tokenName];
   }
 
@@ -53,7 +53,7 @@ describe('Testing hooks', () => {
     });
 
     moxios.stubRequest(
-      `/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`,
+      `/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`,
       new MockResponse(mockExchangeData, shouldRender)
     );
 

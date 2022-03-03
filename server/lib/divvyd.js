@@ -3,11 +3,11 @@ const axios = require('axios');
 const utils = require('./utils');
 
 const HOSTNAME = os.hostname();
-const URL = `http://${process.env.RIPPLED_HOST}:${process.env.RIPPLED_RPC_PORT}`;
-const URL_HEALTH = `http://${process.env.RIPPLED_HOST}:${process.env.RIPPLED_PEER_PORT}/health`;
+const URL = `http://${process.env.DIVVYD_HOST}:${process.env.DIVVYD_RPC_PORT}`;
+const URL_HEALTH = `http://${process.env.DIVVYD_HOST}:${process.env.DIVVYD_PEER_PORT}/health`;
 // If there is a separate peer to peer server for admin requests, use it. Otherwise use the default url for everything.
-const P2P_URL = process.env.P2P_RIPPLED_HOST
-  ? `http://${process.env.P2P_RIPPLED_HOST}:${process.env.RIPPLED_RPC_PORT}`
+const P2P_URL = process.env.P2P_DIVVYD_HOST
+  ? `http://${process.env.P2P_DIVVYD_HOST}:${process.env.DIVVYD_RPC_PORT}`
   : URL;
 
 const executeQuery = (url, options) => {
@@ -75,11 +75,11 @@ module.exports.getOffers = (currencyCode, issuerAddress, pairCurrencyCode, pairI
       {
         taker_gets: {
           currency: `${currencyCode.toUpperCase()}`,
-          issuer: currencyCode.toUpperCase() === 'XRP' ? undefined : `${issuerAddress}`,
+          issuer: currencyCode.toUpperCase() === 'XDV' ? undefined : `${issuerAddress}`,
         },
         taker_pays: {
           currency: `${pairCurrencyCode.toUpperCase()}`,
-          issuer: pairCurrencyCode.toUpperCase() === 'XRP' ? undefined : `${pairIssuerAddress}`,
+          issuer: pairCurrencyCode.toUpperCase() === 'XDV' ? undefined : `${pairIssuerAddress}`,
         },
       },
     ],
@@ -99,9 +99,9 @@ module.exports.getHealth = async () => {
     if (error.response) {
       throw new utils.Error(error.response.data, error.response.status);
     } else if (error.request) {
-      throw new utils.Error('rippled unreachable', 500);
+      throw new utils.Error('divvyd unreachable', 500);
     } else {
-      throw new utils.Error('rippled unreachable', 500);
+      throw new utils.Error('divvyd unreachable', 500);
     }
   });
 };

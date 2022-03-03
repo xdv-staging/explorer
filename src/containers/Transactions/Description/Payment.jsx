@@ -40,14 +40,14 @@ const Payment = props => {
       {`${t('payment_desc_line_4')}${partial ? ' up to' : ''}`}
       <b>
         <span> {normalizeAmount(data.tx.Amount, language)}</span>
-        <small>{data.tx.Amount.currency || 'XRP'}</small>
+        <small>{data.tx.Amount.currency || ''}</small>
       </b>
       {data.tx.SendMax && (
         <>
           <span> {t('payment_desc_line_5')}</span>
           <b>
             <span> {normalizeAmount(data.tx.SendMax, language)}</span>
-            <small>{data.tx.SendMax.currency || 'XRP'}</small>
+            <small>{data.tx.SendMax.currency || ''}</small>
           </b>
         </>
       )}
@@ -60,7 +60,7 @@ const Payment = props => {
         {t('payment_desc_line_6')}
         <b>
           <span> {normalizeAmount(data.meta.delivered_amount, language)}</span>
-          <small>{data.meta.delivered_amount.currency || 'XRP'}</small>
+          <small>{data.meta.delivered_amount.currency || ''}</small>
         </b>
       </div>
     );

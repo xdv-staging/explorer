@@ -16,7 +16,7 @@ ERROR_MESSAGES[NOT_FOUND] = {
   hints: ['check_account_id'],
 };
 ERROR_MESSAGES[BAD_REQUEST] = {
-  title: 'invalid_xrpl_address',
+  title: 'invalid_xdvl_address',
   hints: ['check_account_id'],
 };
 ERROR_MESSAGES.default = {
@@ -30,7 +30,7 @@ class Accounts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currencySelected: 'XRP',
+      currencySelected: 'XDV',
     };
   }
 
@@ -72,7 +72,7 @@ class Accounts extends Component {
     const showError = accountId === prevId && error;
     const { currencySelected } = this.state;
 
-    document.title = `${t('xrpl_explorer')} | ${accountId.substr(0, 12)}...`;
+    document.title = `${t('xdvl_explorer')} | ${accountId.substr(0, 12)}...`;
 
     return showError ? (
       Accounts.renderError(error)

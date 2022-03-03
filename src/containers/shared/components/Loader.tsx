@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
-import loader from '../images/xrp-loader.png';
+import loader from '../images/xdv-loader.png';
 import '../css/loader.css';
 
 interface Props {

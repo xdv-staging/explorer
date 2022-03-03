@@ -40,7 +40,7 @@
       },
       {
         "CreatedNode": {
-          "LedgerEntryType": "RippleState",
+          "LedgerEntryType": "DivvyState",
           "LedgerIndex": "5DCC9786FDDEC880D7D60FAF0218BB3A534257E2D5F4247DB1CEACF136EE62C5",
           "NewFields": {
             "Flags": 1114112,

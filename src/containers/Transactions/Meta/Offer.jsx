@@ -1,17 +1,17 @@
 import React from 'react';
 import { Trans } from 'react-i18next';
-import { CURRENCY_ORDER, CURRENCY_OPTIONS, XRP_BASE } from '../../shared/transactionUtils';
+import { CURRENCY_ORDER, CURRENCY_OPTIONS, _BASE } from '../../shared/transactionUtils';
 import { localizeNumber } from '../../shared/utils';
 import Account from '../../shared/components/Account';
 
-const normalize = (value, currency) => (currency === 'XRP' ? (value / XRP_BASE).toString() : value);
+const normalize = (value, currency) => (currency === '' ? (value / _BASE).toString() : value);
 
 const renderChanges = (t, language, node, index) => {
   const meta = [];
   const final = node.FinalFields;
   const prev = node.PreviousFields;
-  const paysCurrency = final.TakerPays.currency || 'XRP';
-  const getsCurrency = final.TakerGets.currency || 'XRP';
+  const paysCurrency = final.TakerPays.currency || '';
+  const getsCurrency = final.TakerGets.currency || '';
   const finalPays = final.TakerPays.value || final.TakerPays;
   const finalGets = final.TakerGets.value || final.TakerGets;
   const prevPays = prev.TakerPays.value || prev.TakerPays;
@@ -78,8 +78,8 @@ const renderChanges = (t, language, node, index) => {
 const render = (t, language, action, node, index, tx) => {
   const lines = [];
   const fields = node.FinalFields || node.NewFields;
-  const paysCurrency = fields.TakerPays.currency || 'XRP';
-  const getsCurrency = fields.TakerGets.currency || 'XRP';
+  const paysCurrency = fields.TakerPays.currency || '';
+  const getsCurrency = fields.TakerGets.currency || '';
   const takerPaysValue = normalize(fields.TakerPays.value || fields.TakerPays, paysCurrency);
   const invert = CURRENCY_ORDER.indexOf(getsCurrency) > CURRENCY_ORDER.indexOf(paysCurrency);
   const pair = invert ? `${getsCurrency}/${paysCurrency}` : `${paysCurrency}/${getsCurrency}`;

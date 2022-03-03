@@ -11,12 +11,12 @@ import {
   analytics,
   ANALYTIC_TYPES,
 } from '../../shared/utils';
-import { getOffers } from '../../../rippled';
+import { getOffers } from '../../../divvyd';
 import PairStats from './PairStats';
 
 // Hard Coded Pairs that we always check for
 const pairsHardCoded = [
-  { currency: 'XRP' },
+  { currency: 'XDV' },
   { currency: 'USD', issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' }, // Bitstamp USD
   { currency: 'BTC', issuer: 'rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' }, // Bitstamp BTC
 ];
@@ -58,7 +58,7 @@ const DEXPairs = props => {
                 .then(data => {
                   if (data.offers && data.offers.length > 0) {
                     let { averageExchangeRate, lowestExchangeRate, highestExchangeRate } = data;
-                    if (token.currency === 'XRP') {
+                    if (token.currency === 'XDV') {
                       averageExchangeRate /= 1000000;
                       lowestExchangeRate /= 1000000;
                       highestExchangeRate /= 1000000;
@@ -124,7 +124,7 @@ const DEXPairs = props => {
           {pair.issuer !== undefined ? (
             <a href={`/token/${pair.token}.${pair.issuer}`}>{pair.issuer}</a>
           ) : (
-            getLocalizedCurrencySymbol('en-US', 'XRP')
+            getLocalizedCurrencySymbol('en-US', 'XDV')
           )}
         </td>
         <td>

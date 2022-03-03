@@ -39,7 +39,7 @@ class Transaction extends Component {
     const { identifier = '', tab = 'simple' } = match.params;
     const short = identifier.substr(0, 8);
 
-    document.title = `${t('xrpl_explorer')} | ${t('transaction_short')} ${short}...`;
+    document.title = `${t('xdvl_explorer')} | ${t('transaction_short')} ${short}...`;
     analytics(ANALYTIC_TYPES.pageview, {
       title: 'Transaction',
       path: `/transactions/:hash/${tab}`,

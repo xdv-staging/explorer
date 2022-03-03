@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { classicAddressToXAddress } from 'ripple-address-codec';
+import { classicAddressToXAddress } from 'divvy-address-codec';
 import { loadPayStringData } from './actions';
 import Loader from '../../shared/components/Loader';
 import externalLinkIcon from '../../shared/images/external_link.svg';
@@ -92,10 +92,10 @@ export class PayStringAddressesTable extends Component {
 
     let addressLink = '#';
     let title = '';
-    if (paymentNetwork === 'XRPL') {
+    if (paymentNetwork === 'XDVL') {
       if (environment === 'MAINNET') {
         if (tag && tag !== INVALID) {
-          // XRPL - with tag
+          // XDVL - with tag
           try {
             const xAddress = classicAddressToXAddress(address, tag, false);
             addressLink = `/accounts/${xAddress}`;
@@ -104,24 +104,24 @@ export class PayStringAddressesTable extends Component {
             title = `Error: ${error.message}`;
           }
         } else {
-          // XRPL - no tag
+          // XDVL - no tag
           addressLink = `/accounts/${address}`;
           title = `View ${address}`;
         }
       } else if (environment === 'TESTNET') {
-        // XRPL - TESTNET
+        // XDVL - TESTNET
         if (tag && tag !== INVALID) {
-          // XRPL - with tag
+          // XDVL - with tag
           try {
             const xAddress = classicAddressToXAddress(address, tag, true); // true for TESTNET
-            addressLink = `https://testnet.xrpl.org/accounts/${xAddress}`;
+            addressLink = `https://testnet.xdv.io/accounts/${xAddress}`;
             title = `View ${xAddress}`;
           } catch (error) {
             title = `Error: ${error.message}`;
           }
         } else {
-          // XRPL - no tag
-          addressLink = `https://testnet.xrpl.org/accounts/${address}`;
+          // XDVL - no tag
+          addressLink = `https://testnet.xdv.io/accounts/${address}`;
           title = `View ${address}`;
         }
       }

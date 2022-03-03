@@ -9,7 +9,7 @@ const MILLION = 1000000;
 const render = (t, language, action, node, index) => {
   const fields = node.FinalFields || node.NewFields;
   const prev = node.PreviousFields;
-  const numberOption = { ...CURRENCY_OPTIONS, currency: 'XRP' };
+  const numberOption = { ...CURRENCY_OPTIONS, currency: '' };
   const prevBalance = prev && prev.Balance ? prev.Balance : null;
   const prevAmount = prev && prev.Amount ? prev.Amount : null;
 
@@ -28,17 +28,17 @@ const render = (t, language, action, node, index) => {
         Balance changed by
         <b>
           {localizeNumber((fields.Balance - prevBalance) / MILLION, language, numberOption)}
-          <small>XRP</small>
+          <small></small>
         </b>
         from
         <b>
           {localizeNumber(prevBalance / MILLION, language, numberOption)}
-          <small>XRP</small>
+          <small></small>
         </b>
         to
         <b>
           {localizeNumber(fields.Balance / MILLION, language, numberOption)}
-          <small>XRP</small>
+          <small></small>
         </b>
       </Trans>
     </li>
@@ -50,17 +50,17 @@ const render = (t, language, action, node, index) => {
         Amount changed by
         <b>
           {localizeNumber((fields.Amount - prevAmount) / MILLION, language, numberOption)}
-          <small>XRP</small>
+          <small></small>
         </b>
         from
         <b>
           {localizeNumber(prevAmount / MILLION, language, numberOption)}
-          <small>XRP</small>
+          <small></small>
         </b>
         to
         <b>
           {localizeNumber(fields.Amount / MILLION, language, numberOption)}
-          <small>XRP</small>
+          <small></small>
         </b>
       </Trans>
     </li>

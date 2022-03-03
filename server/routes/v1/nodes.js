@@ -43,7 +43,7 @@ const cacheNodes = async () => {
         host: node.ip,
         port: node.port,
         pubkey_node: node.node_public_key,
-        version: node.version.startsWith('rippled') ? node.version.split('-')[1] : node.version,
+        version: node.version.startsWith('divvyd') ? node.version.split('-')[1] : node.version,
         ledgers: node.complete_ledgers,
         uptime: node.uptime,
         networks: node.networks,

@@ -20,19 +20,19 @@ const PaymentChannelFund = props => {
         <b>
           {' '}
           {normalizeAmount(data.tx.Amount, language)}
-          <small>XRP</small>
+          <small></small>
         </b>
         {node && (
           <span>
             {` ${t('from')} `}
             <b>
               {normalizeAmount(node.PreviousFields.Amount, language)}
-              <small>XRP</small>
+              <small></small>
             </b>
             {` ${t('to')} `}
             <b>
               {normalizeAmount(node.FinalFields.Amount, language)}
-              <small>XRP</small>
+              <small></small>
             </b>
           </span>
         )}

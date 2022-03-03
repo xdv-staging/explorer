@@ -18,8 +18,8 @@ module.exports = (tx, meta) => {
     destination: `${tx.Destination}${dt}`,
     pubkey: tx.PublicKey,
     delay: tx.SettleDelay,
-    expiration: tx.Expiration ? utils.convertRippleDate(tx.Expiration) : undefined,
-    cancelAfter: tx.CancelAfter ? utils.convertRippleDate(tx.CancelAfter) : undefined,
+    expiration: tx.Expiration ? utils.convertDivvyDate(tx.Expiration) : undefined,
+    cancelAfter: tx.CancelAfter ? utils.convertDivvyDate(tx.CancelAfter) : undefined,
     channel: node && node.LedgerIndex,
   };
 };

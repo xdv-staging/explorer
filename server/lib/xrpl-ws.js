@@ -1,50 +1,50 @@
 const WebSocket = require('ws');
 const streams = require('./streams');
-const log = require('./logger')({ name: 'xrpl ws' });
+const log = require('./logger')({ name: 'xdvl ws' });
 
-const RIPPLEDS = [
+const DIVVYDS = [
   {
-    host: process.env.RIPPLED_HOST,
-    port: process.env.RIPPLED_WS_PORT,
+    host: process.env.DIVVYD_HOST,
+    port: process.env.DIVVYD_WS_PORT,
     primary: true,
   },
 ];
 
 let connections = [];
 
-if (process.env.RIPPLED_SECONDARY) {
-  process.env.RIPPLED_SECONDARY.split(',').forEach(d => {
-    const rippled = d.split(':');
-    RIPPLEDS.push({
-      host: rippled[0],
-      port: rippled[1] || 51233,
+if (process.env.DIVVYD_SECONDARY) {
+  process.env.DIVVYD_SECONDARY.split(',').forEach(d => {
+    const divvyd = d.split(':');
+    DIVVYDS.push({
+      host: divvyd[0],
+      port: divvyd[1] || 51233,
     });
   });
 }
 
-const connect = rippled => {
-  log.info(`${rippled.host}:${rippled.port} connecting...`);
-  const ws = new WebSocket(`ws://${rippled.host}:${rippled.port}`);
-  ws.rippled = rippled;
+const connect = divvyd => {
+  log.info(`${divvyd.host}:${divvyd.port} connecting...`);
+  const ws = new WebSocket(`ws://${divvyd.host}:${divvyd.port}`);
+  ws.divvyd = divvyd;
 
   // handle close
   ws.on('close', () => {
-    log.info(`${rippled.host} closed`);
+    log.info(`${divvyd.host} closed`);
     ws.last = Date.now();
   });
 
   // handle error
   ws.on('error', e => {
-    log.error(`${rippled.host} error - ${e.toString()}`);
+    log.error(`${divvyd.host} error - ${e.toString()}`);
   });
 
   // subscribe and save new connections
   ws.on('open', () => {
-    log.info(`${rippled.host} connected`);
+    log.info(`${divvyd.host} connected`);
     ws.send(
       JSON.stringify({
         command: 'subscribe',
-        streams: rippled.primary ? ['ledger'] : [],
+        streams: divvyd.primary ? ['ledger'] : [],
       })
     );
   });
@@ -71,8 +71,8 @@ const checkHeartbeat = () => {
   connections.forEach((ws, i) => {
     if (Date.now() - ws.last > 10000) {
       ws.terminate();
-      log.info(`attempt reconnect ${ws.rippled.host}`);
-      connections[i] = connect(ws.rippled);
+      log.info(`attempt reconnect ${ws.divvyd.host}`);
+      connections[i] = connect(ws.divvyd);
     }
   });
 };
@@ -80,5 +80,5 @@ const checkHeartbeat = () => {
 setInterval(checkHeartbeat, 2000);
 
 module.exports.start = () => {
-  connections = RIPPLEDS.map(connect);
+  connections = DIVVYDS.map(connect);
 };

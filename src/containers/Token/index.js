@@ -19,7 +19,7 @@ ERROR_MESSAGES[NOT_FOUND] = {
   hints: ['check_account_id'],
 };
 ERROR_MESSAGES[BAD_REQUEST] = {
-  title: 'invalid_xrpl_address',
+  title: 'invalid_xdvl_address',
   hints: ['check_account_id'],
 };
 ERROR_MESSAGES.default = {
@@ -68,7 +68,7 @@ class Token extends Component {
     const showError = accountId === prevId && error;
 
     // TODO: title this so it includes the currency code somehow
-    document.title = `${t('xrpl_explorer')} | ${accountId.substr(0, 12)}...`;
+    document.title = `${t('xdvl_explorer')} | ${accountId.substr(0, 12)}...`;
 
     return showError ? (
       Token.renderError(error)

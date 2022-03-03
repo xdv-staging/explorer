@@ -1,6 +1,6 @@
 import { analytics, ANALYTIC_TYPES, BAD_REQUEST, DECIMAL_REGEX, HASH_REGEX } from '../shared/utils';
 import * as actionTypes from './actionTypes';
-import { getLedger } from '../../rippled';
+import { getLedger } from '../../divvyd';
 
 export const loadLedger = identifier => dispatch => {
   if (!DECIMAL_REGEX.test(identifier) && !HASH_REGEX.test(identifier)) {

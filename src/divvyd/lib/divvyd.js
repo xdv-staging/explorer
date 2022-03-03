@@ -1,7 +1,7 @@
 import { post } from 'axios';
 import { hostname } from 'os';
 import { unix } from 'moment';
-import { Error, XRP_BASE, EPOCH_OFFSET } from './utils';
+import { Error, _BASE, EPOCH_OFFSET } from './utils';
 
 const HOSTNAME = hostname();
 const N_UNL_INDEX = '2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244';
@@ -10,7 +10,7 @@ const formatEscrow = d => ({
   id: d.index,
   account: d.Account,
   destination: d.Destination,
-  amount: d.Amount / XRP_BASE,
+  amount: d.Amount / _BASE,
   condition: d.Condition,
   cancelAfter: d.CancelAfter
     ? unix(d.CancelAfter + EPOCH_OFFSET)
@@ -28,8 +28,8 @@ const formatPaychannel = d => ({
   id: d.index,
   account: d.Account,
   destination: d.Destination,
-  amount: d.Amount / XRP_BASE,
-  balance: d.Balance / XRP_BASE,
+  amount: d.Amount / _BASE,
+  balance: d.Balance / _BASE,
   settleDelay: d.SettleDelay,
 });
 
@@ -47,14 +47,14 @@ const executeQuery = (url, options) => {
 
 // generic RPC query
 function query(...options) {
-  return executeQuery(process.env.REACT_APP_RIPPLED_HOST, ...options);
+  return executeQuery(process.env.REACT_APP_DIVVYD_HOST, ...options);
 }
 
 // If there is a separate peer to peer (not reporting mode) server for admin requests, use it.
 // Otherwise use the default url for everything.
 function queryP2P(...options) {
   return executeQuery(
-    process.env.REACT_APP_P2P_RIPPLED_HOST ?? process.env.REACT_APP_RIPPLED_HOST,
+    process.env.REACT_APP_P2P_DIVVYD_HOST ?? process.env.REACT_APP_DIVVYD_HOST,
     ...options
   );
 }
@@ -171,9 +171,9 @@ const getAccountEscrows = (account, ledger_index = 'validated') =>
         }
       });
 
-      escrows.total /= XRP_BASE;
-      escrows.totalIn /= XRP_BASE;
-      escrows.totalOut /= XRP_BASE;
+      escrows.total /= _BASE;
+      escrows.totalIn /= _BASE;
+      escrows.totalOut /= _BASE;
       return escrows;
     });
 
@@ -216,7 +216,7 @@ const getAccountPaychannels = async (account, ledger_index = 'validated') => {
   return channels.length
     ? {
         channels,
-        total_available: remaining / XRP_BASE,
+        total_available: remaining / _BASE,
       }
     : null;
 };
@@ -320,11 +320,11 @@ const getOffers = (currencyCode, issuerAddress, pairCurrencyCode, pairIssuerAddr
       {
         taker_gets: {
           currency: `${currencyCode.toUpperCase()}`,
-          issuer: currencyCode.toUpperCase() === 'XRP' ? undefined : `${issuerAddress}`,
+          issuer: currencyCode.toUpperCase() === '' ? undefined : `${issuerAddress}`,
         },
         taker_pays: {
           currency: `${pairCurrencyCode.toUpperCase()}`,
-          issuer: pairCurrencyCode.toUpperCase() === 'XRP' ? undefined : `${pairIssuerAddress}`,
+          issuer: pairCurrencyCode.toUpperCase() === '' ? undefined : `${pairIssuerAddress}`,
         },
       },
     ],

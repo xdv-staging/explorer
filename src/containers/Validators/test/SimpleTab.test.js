@@ -18,7 +18,7 @@ describe('SimpleTab container', () => {
             load_fee: null,
             partial: false,
             chain: null,
-            unl: 'vl.ripple.com',
+            unl: 'vl.xdv.io',
             last_ledger_time: '2020-05-28T09:21:19.000Z',
             agreement_1hour: {
               score: 1,

@@ -10,7 +10,7 @@ class Network extends Component {
   componentDidMount() {
     const { t, match } = this.props;
     const { params } = match;
-    document.title = `${t('xrpl_explorer')} | ${t('network')}`;
+    document.title = `${t('xdvl_explorer')} | ${t('network')}`;
     analytics(ANALYTIC_TYPES.pageview, {
       title: 'network',
       path: `/network/${params.tab || 'nodes'}`,

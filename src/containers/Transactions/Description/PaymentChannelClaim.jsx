@@ -33,7 +33,7 @@ const PaymentChannelClaim = props => {
         <b>
           {' '}
           {normalizeAmount(data.tx.Balance, language)}
-          <small>XRP</small>
+          <small></small>
         </b>
         {change && (
           <span>
@@ -42,7 +42,7 @@ const PaymentChannelClaim = props => {
             <b>
               {' '}
               {normalizeAmount(change, language)}
-              <small>XRP</small>
+              <small></small>
             </b>
             )
           </span>

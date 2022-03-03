@@ -55,7 +55,7 @@ describe('utils', () => {
     expect(
       localizeNumber(12.2334, 'en-US', {
         style: 'currency',
-        currency: 'xrp',
+        currency: 'xdv',
         maximumFractionDigits: 2,
       })
     ).toEqual('12.23');
@@ -69,7 +69,7 @@ describe('utils', () => {
     expect(
       localizeNumber(12.2334, 'en-US', {
         style: 'currency',
-        currency: 'XRp',
+        currency: 'XDV',
         maximumFractionDigits: 2,
       })
     ).toEqual('12.23');
@@ -86,7 +86,7 @@ describe('utils', () => {
     expect(getLocalizedCurrencySymbol('ja-JP', 'EUR')).toEqual('€');
     expect(getLocalizedCurrencySymbol('en-US', 'USDT')).toEqual('');
     expect(getLocalizedCurrencySymbol('en-US', 'BTC')).toEqual('₿');
-    expect(getLocalizedCurrencySymbol('zh-Hans', 'XRP')).toEqual('\uE900');
+    expect(getLocalizedCurrencySymbol('zh-Hans', 'XDV')).toEqual('\uE900');
     expect(getLocalizedCurrencySymbol('zh-Hans', 'ETH')).toEqual('\uE902');
   });
 

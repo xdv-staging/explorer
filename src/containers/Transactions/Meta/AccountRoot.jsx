@@ -1,16 +1,16 @@
 import React from 'react';
 import { Trans } from 'react-i18next';
-import { CURRENCY_OPTIONS, XRP_BASE } from '../../shared/transactionUtils';
+import { CURRENCY_OPTIONS, _BASE } from '../../shared/transactionUtils';
 import { localizeNumber } from '../../shared/utils';
 import Account from '../../shared/components/Account';
 
 const render = (t, language, action, node, index) => {
   const fields = node.FinalFields || node.NewFields || { Balance: 0 };
   const prev = node.PreviousFields || { Balance: 0 };
-  const change = (fields.Balance - prev.Balance) / XRP_BASE;
-  const numberOption = { ...CURRENCY_OPTIONS, currency: 'XRP' };
-  const prevBalance = localizeNumber(prev.Balance / XRP_BASE, language, numberOption);
-  const finalBalance = localizeNumber(fields.Balance / XRP_BASE, language, numberOption);
+  const change = (fields.Balance - prev.Balance) / _BASE;
+  const numberOption = { ...CURRENCY_OPTIONS, currency: '' };
+  const prevBalance = localizeNumber(prev.Balance / _BASE, language, numberOption);
+  const finalBalance = localizeNumber(fields.Balance / _BASE, language, numberOption);
 
   const renderLine2 = () => {
     if (change > 0) {
@@ -21,17 +21,17 @@ const render = (t, language, action, node, index) => {
               Balance increased by
               <b>
                 {localizeNumber(change, language, numberOption)}
-                <small>XRP</small>
+                <small></small>
               </b>
               from
               <b>
                 {prevBalance}
-                <small>XRP</small>
+                <small></small>
               </b>
               to
               <b>
                 {finalBalance}
-                <small>XRP</small>
+                <small></small>
               </b>
             </Trans>
           </li>
@@ -46,17 +46,17 @@ const render = (t, language, action, node, index) => {
               Balance decreased by
               <b>
                 {localizeNumber(change, language, numberOption)}
-                <small>XRP</small>
+                <small></small>
               </b>
               from
               <b>
                 {prevBalance}
-                <small>XRP</small>
+                <small></small>
               </b>
               to
               <b>
                 {finalBalance}
-                <small>XRP</small>
+                <small></small>
               </b>
             </Trans>
           </li>

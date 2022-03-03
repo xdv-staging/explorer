@@ -9,10 +9,10 @@
         "uptime": 1820444,
         "validated_ledger": {
           "age": 6,
-          "base_fee_xrp": 0.00001,
+          "base_fee_xdv": 0.00001,
           "hash": "A5F887A191348B69129B168EDA5BC8EEE9EAC60E2599A8034742199471C70604",
-          "reserve_base_xrp": 10,
-          "reserve_inc_xrp": 2,
+          "reserve_base_xdv": 10,
+          "reserve_inc_xdv": 2,
           "seq": 68992561
         },
         "validation_quorum": 1

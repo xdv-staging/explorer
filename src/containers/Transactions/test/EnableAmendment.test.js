@@ -92,7 +92,7 @@ const versionTable = [
   ['SusPay', 'v0.31.0'],
 ];
 
-it.each(versionTable)('Check all known rippled versions', async (name, expectedVersion) => {
-  const retrievedVersion = await EnableAmendment.getRippledVersion(name);
+it.each(versionTable)('Check all known divvyd versions', async (name, expectedVersion) => {
+  const retrievedVersion = await EnableAmendment.getDivvydVersion(name);
   return expect(retrievedVersion).toEqual(expectedVersion);
 });

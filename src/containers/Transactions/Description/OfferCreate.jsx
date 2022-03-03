@@ -5,18 +5,18 @@ import { localizeDate } from '../../shared/utils';
 import {
   DATE_OPTIONS,
   CURRENCY_ORDER,
-  RIPPLE_EPOCH,
-  XRP_BASE,
+  DIVVY_EPOCH,
+  _BASE,
   normalizeAmount,
 } from '../../shared/transactionUtils';
 import Account from '../../shared/components/Account';
 
-const normalize = amount => amount.value || amount / XRP_BASE;
+const normalize = amount => amount.value || amount / _BASE;
 
 const OfferCreate = props => {
   const { t, language, data } = props;
-  const paysCurrency = data.tx.TakerPays.currency || 'XRP';
-  const getsCurrency = data.tx.TakerGets.currency || 'XRP';
+  const paysCurrency = data.tx.TakerPays.currency || '';
+  const getsCurrency = data.tx.TakerGets.currency || '';
   const paysValue = normalize(data.tx.TakerPays);
   const getsValue = normalize(data.tx.TakerGets);
   const invert = CURRENCY_ORDER.indexOf(getsCurrency) > CURRENCY_ORDER.indexOf(paysCurrency);
@@ -39,12 +39,12 @@ const OfferCreate = props => {
         offered to pay
         <b>
           {normalizeAmount(data.tx.TakerGets, language)}
-          <small>{data.tx.TakerGets.currency || 'XRP'}</small>
+          <small>{data.tx.TakerGets.currency || ''}</small>
         </b>
         in order to receive
         <b>
           {normalizeAmount(data.tx.TakerPays, language)}
-          <small>{data.tx.TakerPays.currency || 'XRP'}</small>
+          <small>{data.tx.TakerPays.currency || ''}</small>
         </b>
       </Trans>
     </div>
@@ -70,7 +70,7 @@ const OfferCreate = props => {
   }
 
   if (data.tx.Expiration) {
-    const unixT = (data.tx.Expiration + RIPPLE_EPOCH) * 1000;
+    const unixT = (data.tx.Expiration + DIVVY_EPOCH) * 1000;
     const today = new Date();
     const transString =
       unixT - today.getTime() > 0 ? 'offer_will_expire_desc' : 'offer_did_expire_desc';

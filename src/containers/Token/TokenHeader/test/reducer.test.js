@@ -21,7 +21,7 @@ describe('AccountHeader reducers', () => {
   });
 
   it('should handle ACCOUNT_STATE_LOAD_SUCCESS', () => {
-    const data = [['XRP', 123.456]];
+    const data = [['', 123.456]];
     const nextState = { ...initialState, data };
     expect(
       reducer(initialState, {
@@ -45,7 +45,7 @@ describe('AccountHeader reducers', () => {
   });
 
   it('will not clear previous data on ACCOUNT_STATE_LOAD_FAIL', () => {
-    const data = [['XRP', 123.456]];
+    const data = [['', 123.456]];
     const error = 'error';
     const status = 500;
     const stateWithData = { ...initialState, data };

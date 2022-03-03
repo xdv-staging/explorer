@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getQuorum, getNegativeUNL } from '../../rippled';
+import { getQuorum, getNegativeUNL } from '../../divvyd';
 import Log from './log';
 
 const THOUSAND = 1000;
@@ -12,7 +12,7 @@ const GA_ID = process.env.REACT_APP_GA_ID;
 
 const EXOTIC_SYMBOLS = {
   BTC: '\u20BF',
-  XRP: '\uE900',
+  XDV: '\uE900',
   ETH: '\uE902',
 };
 
@@ -22,7 +22,7 @@ export const SERVER_ERROR = 500;
 export const BAD_REQUEST = 400;
 
 export const DECIMAL_REGEX = /^\d+$/;
-export const RIPPLE_ADDRESS_REGEX = /^r[rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz]{27,35}$/;
+export const DIVVY_ADDRESS_REGEX = /^r[rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz]{27,35}$/;
 export const HASH_REGEX = /[0-9A-Fa-f]{64}/i;
 export const CURRENCY_REGEX = /^[a-zA-Z0-9]{3,}\.r[rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz]{27,35}$/;
 export const FULL_CURRENCY_REGEX = /^[0-9A-Fa-f]{40}\.r[rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz]{27,35}$/;

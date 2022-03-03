@@ -5,8 +5,8 @@ import * as actions from '../actions';
 import * as actionTypes from '../actionTypes';
 import { initialState } from '../reducer';
 import { NOT_FOUND, BAD_REQUEST, SERVER_ERROR } from '../../../shared/utils';
-import moxiosData from './rippledResponses.json';
-import MockResponse from '../../../test/mockRippledResponse';
+import moxiosData from './divvydResponses.json';
+import MockResponse from '../../../test/mockDivvydResponse';
 import actNotFound from '../../../Token/TokenHeader/test/actNotFound.json';
 
 const TEST_ADDRESS = 'rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv';
@@ -42,7 +42,7 @@ describe('AccountHeader Actions', () => {
         previousTxn: '6B6F2CA1633A22247058E988372BA9EFFFC5BF10212230B67341CA32DC9D4A82',
         previousLedger: 68990183,
       },
-      balances: { XRP: 123.456 },
+      balances: { XDV: 123.456 },
       signerList: undefined,
       escrows: undefined,
       paychannels: null,
@@ -55,7 +55,7 @@ describe('AccountHeader Actions', () => {
     ];
     const store = mockStore({ news: initialState });
     moxios.stubRequest(
-      `/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`,
+      `/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`,
       new MockResponse(moxiosData)
     );
     return store.dispatch(actions.loadAccountState(TEST_ADDRESS)).then(() => {
@@ -82,7 +82,7 @@ describe('AccountHeader Actions', () => {
         previousTxn: '6B6F2CA1633A22247058E988372BA9EFFFC5BF10212230B67341CA32DC9D4A82',
         previousLedger: 68990183,
       },
-      balances: { XRP: 123.456 },
+      balances: { XDV: 123.456 },
       signerList: undefined,
       escrows: undefined,
       paychannels: null,
@@ -99,7 +99,7 @@ describe('AccountHeader Actions', () => {
     ];
     const store = mockStore({ news: initialState });
     moxios.stubRequest(
-      `/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`,
+      `/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`,
       new MockResponse(moxiosData)
     );
     return store.dispatch(actions.loadAccountState(TEST_X_ADDRESS)).then(() => {
@@ -118,7 +118,7 @@ describe('AccountHeader Actions', () => {
       },
     ];
     const store = mockStore({ news: initialState });
-    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`, {
+    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`, {
       status: SERVER_ERROR,
       response: null,
     });
@@ -127,14 +127,14 @@ describe('AccountHeader Actions', () => {
     });
   });
 
-  it('should dispatch correct actions on ripple address not found', () => {
+  it('should dispatch correct actions on divvy address not found', () => {
     const expectedActions = [
       { type: actionTypes.START_LOADING_ACCOUNT_STATE },
       { type: actionTypes.FINISHED_LOADING_ACCOUNT_STATE },
       { type: actionTypes.ACCOUNT_STATE_LOAD_FAIL, status: NOT_FOUND, error: '' },
     ];
     const store = mockStore({ news: initialState });
-    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`, {
+    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`, {
       status: 200,
       response: { result: actNotFound },
     });
@@ -143,7 +143,7 @@ describe('AccountHeader Actions', () => {
     });
   });
 
-  it('should dispatch correct actions on invalid ripple address', () => {
+  it('should dispatch correct actions on invalid divvy address', () => {
     const expectedActions = [
       { type: actionTypes.ACCOUNT_STATE_LOAD_FAIL, status: BAD_REQUEST, error: '' },
     ];

@@ -42,13 +42,13 @@ const renderApp = () => {
         </PersistGate>
       </Provider>
     </I18nextProvider>,
-    document.getElementById('xrpl-explorer')
+    document.getElementById('xdvl-explorer')
   );
 };
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const persistConfig = {
-  key: 'xrpl_explorer',
+  key: 'xdvl_explorer',
   storage: localForage,
 };
 
@@ -56,7 +56,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const middlewarePackages = [thunk];
 let middleware = applyMiddleware(...middlewarePackages);
 if (isDevelopment) {
-  localStorage.setItem('debug', 'xrpl-debug:*');
+  localStorage.setItem('debug', 'xdvl-debug:*');
   middlewarePackages.push(reduxLogger);
   middleware = applyMiddleware(...middlewarePackages);
   enhancers = composeWithDevTools(middleware);

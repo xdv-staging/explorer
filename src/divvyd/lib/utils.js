@@ -2,18 +2,18 @@ import { unix } from 'moment';
 import summarizeTransaction from './txSummary';
 
 const EPOCH_OFFSET = 946684800;
-const XRP_BASE = 1000000;
+const _BASE = 1000000;
 const BILLION = 1000000000;
 
 const ACCOUNT_FLAGS = {
   0x00010000: 'lsfPasswordSpent',
   0x00020000: 'lsfRequireDestTag',
   0x00040000: 'lsfRequireAuth',
-  0x00080000: 'lsfDisallowXRP',
+  0x00080000: 'lsfDisallow',
   0x00100000: 'lsfDisableMaster',
   0x00200000: 'lsfNoFreeze',
   0x00400000: 'lsfGlobalFreeze',
-  0x00800000: 'lsfDefaultRipple',
+  0x00800000: 'lsfDefaultDivvy',
   0x01000000: 'lsfDepositAuth',
 };
 
@@ -44,7 +44,7 @@ const buildFlags = flags => {
     .filter(d => Boolean(d));
 };
 
-const convertRippleDate = date =>
+const convertDivvyDate = date =>
   unix(date + EPOCH_OFFSET)
     .utc()
     .format();
@@ -62,8 +62,8 @@ const formatAccountInfo = (info, serverInfoValidated) => ({
   sequence: info.Sequence,
   ticketCount: info.TicketCount,
   ownerCount: info.OwnerCount,
-  reserve: serverInfoValidated.reserve_base_xrp
-    ? serverInfoValidated.reserve_base_xrp + info.OwnerCount * serverInfoValidated.reserve_inc_xrp
+  reserve: serverInfoValidated.reserve_base_xdv
+    ? serverInfoValidated.reserve_base_xdv + info.OwnerCount * serverInfoValidated.reserve_inc_xdv
     : undefined,
   tick: info.TickSize,
   rate: info.TransferRate ? (info.TransferRate - BILLION) / BILLION : undefined,
@@ -88,31 +88,31 @@ const formatTransaction = tx => {
       ledger_index: undefined,
       status: undefined,
       validated: undefined,
-      date: txn.date ? convertRippleDate(txn.date) : undefined,
+      date: txn.date ? convertDivvyDate(txn.date) : undefined,
     },
     meta: tx.meta || tx.metaData,
     hash: txn.hash,
     ledger_index: txn.ledger_index,
-    date: txn.date ? convertRippleDate(txn.date) : undefined,
+    date: txn.date ? convertDivvyDate(txn.date) : undefined,
   };
 };
 
-function RippledError(message, code) {
+function DivvydError(message, code) {
   Error.captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
   this.message = message;
   this.code = code;
 }
 
-require('util').inherits(RippledError, Error);
+require('util').inherits(DivvydError, Error);
 
 const summarizeLedger = (ledger, txDetails = false) => {
   const summary = {
     ledger_index: Number(ledger.ledger_index),
     ledger_hash: ledger.ledger_hash,
     parent_hash: ledger.parent_hash,
-    close_time: convertRippleDate(ledger.close_time),
-    total_xrp: ledger.total_coins / 1000000,
+    close_time: convertDivvyDate(ledger.close_time),
+    total_xdv: ledger.total_coins / 1000000,
     total_fees: 0,
     transactions: [],
   };
@@ -134,9 +134,9 @@ function convertHexToString(hex, encoding = 'utf8') {
 
 export {
   EPOCH_OFFSET,
-  XRP_BASE,
-  RippledError as Error,
-  convertRippleDate,
+  _BASE,
+  DivvydError as Error,
+  convertDivvyDate,
   formatTransaction,
   formatSignerList,
   formatAccountInfo,

@@ -7,7 +7,7 @@ import {
   handleLedger,
   fetchLedger,
   fetchLoadFee,
-} from '../../../rippled/lib/streams';
+} from '../../../divvyd/lib/streams';
 
 const MAX_LEDGER_COUNT = 20;
 
@@ -221,7 +221,7 @@ class Streams extends Component {
 
   connect() {
     this.ws = new WebSocket(
-      `wss://${process.env.REACT_APP_RIPPLED_HOST}:${process.env.REACT_APP_RIPPLED_WS_PORT}`
+      `wss://${process.env.REACT_APP_DIVVYD_HOST}:${process.env.REACT_APP_DIVVYD_WS_PORT}`
     );
     this.ws.last = Date.now();
     Log.info(`connecting...`);

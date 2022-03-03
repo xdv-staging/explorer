@@ -1,5 +1,5 @@
 const { BigQuery } = require('@google-cloud/bigquery');
-const rippled = require('../../lib/rippled');
+const divvyd = require('../../lib/divvyd');
 
 const log = require('../../lib/logger')({ name: 'token discovery' });
 
@@ -7,7 +7,7 @@ const log = require('../../lib/logger')({ name: 'token discovery' });
 // For the purpose of running locally, this equals false if the env var doesn't exist
 // DO NOT SET TO TRUE UNLESS YOU'RE SURE ABOUT BIGQUERY USAGE
 // aka don't let the site run after you're done using it, because it'll cost $$
-const IS_PROD_ENV = process.env.REACT_APP_MAINNET_LINK?.includes('xrpl.org');
+const IS_PROD_ENV = process.env.REACT_APP_MAINNET_LINK?.includes('xdv.io');
 // How long the auto-caching should run in dev and staging environments
 // We want to turn it off after some time so it doesn't run when we don't need it, which costs us
 // money per BigQuery query
@@ -30,15 +30,15 @@ let options = {
 const bigQuery = new BigQuery(options);
 
 async function getAccountInfo(issuer, currencyCode) {
-  const balances = await rippled.getBalances(issuer);
+  const balances = await divvyd.getBalances(issuer);
   const obligations = balances.obligations[currencyCode.toUpperCase()];
-  const info = await rippled.getAccountInfo(issuer);
+  const info = await divvyd.getAccountInfo(issuer);
   const domain = info.Domain ? Buffer.from(info.Domain, 'hex').toString() : undefined;
   return { domain, gravatar: info.urlgravatar, obligations };
 }
 
 async function getExchangeRate(issuer, currencyCode) {
-  const { offers } = await rippled.getOffers(currencyCode, issuer, 'XRP', undefined);
+  const { offers } = await divvyd.getOffers(currencyCode, issuer, 'XDV', undefined);
   const reducer = (acc, offer) => {
     const takerPays = offer.TakerPays.value || offer.TakerPays;
     const takerGets = offer.TakerGets.value || offer.TakerGets;
@@ -52,7 +52,7 @@ async function getTokensList() {
   const query = `WITH
     trusted_issuers as (
       SELECT LimitAmountDEX.issuer, LimitAmountDEX.currency, count(distinct Account) as count_trustlines
-      FROM \`xrpledgerdata.fullhistory.transactions\`
+      FROM \`xdvledgerdata.fullhistory.transactions\`
       WHERE TransactionType = 'TrustSet'
       GROUP BY 1,2
       HAVING count(distinct Account)>=50
@@ -60,19 +60,19 @@ async function getTokensList() {
     ranked_trustlines as (
       SELECT ti.issuer, ti.currency, t.Account, l.CloseTime, t.LimitAmountDEX.value, ti.count_trustlines, row_number() over (partition by ti.issuer, ti.currency, t.Account order by l.CloseTime desc) as rnk
       FROM trusted_issuers ti
-      LEFT join \`xrpledgerdata.fullhistory.transactions\` t
+      LEFT join \`xdvledgerdata.fullhistory.transactions\` t
         on ti.issuer = t.LimitAmountDEX.issuer and ti.currency = t.LimitAmountDEX.currency and t.TransactionType = 'TrustSet'
-      LEFT join \`xrpledgerdata.fullhistory.ledgers\` l
+      LEFT join \`xdvledgerdata.fullhistory.ledgers\` l
         on t.LedgerIndex = l.LedgerIndex
     )
     SELECT rt.issuer, rt.currency, rt.count_trustlines as trustlines, sum(p.volume) as volume
     FROM ranked_trustlines rt
     LEFT join (
         SELECT t.AmountDEX.currency as currency, t.AmountDEX.issuer as issuer, sum(t.AmountDEX.value) as volume
-        FROM \`xrpledgerdata.fullhistory.transactions\` t
-        LEFT join \`xrpledgerdata.fullhistory.ledgers\` l
+        FROM \`xdvledgerdata.fullhistory.transactions\` t
+        LEFT join \`xdvledgerdata.fullhistory.ledgers\` l
             on t.LedgerIndex = l.LedgerIndex
-        WHERE t.TransactionType = 'Payment' and TIMESTAMP(l.CloseTime) > TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 DAY) and (t.SendMaxDEX is not null or t.SendMaxXRP is not null)
+        WHERE t.TransactionType = 'Payment' and TIMESTAMP(l.CloseTime) > TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 DAY) and (t.SendMaxDEX is not null or t.SendMaxXDV is not null)
         GROUP BY t.AmountDEX.currency, t.AmountDEX.issuer
     ) p
         on p.currency = rt.currency and p.issuer = rt.issuer
@@ -84,7 +84,7 @@ async function getTokensList() {
   const [rankedTokens] = await bigQuery.query(options);
 
   // This is running in mostly series instead of aggressively parallel on purpose.
-  // It prevents the Explorer from getting caught by rate-limiting on the rippled node.
+  // It prevents the Explorer from getting caught by rate-limiting on the divvyd node.
   for (let i = 0; i <= NUM_TOKENS_FETCH_ALL; i += 1) {
     const { issuer, currency } = rankedTokens[i];
     const promises = [];

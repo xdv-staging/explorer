@@ -1,7 +1,7 @@
 # Contributing
 Thanks for contributing to the explorer!
 
-We're thrilled you're interested and your help is greatly appreciated. Contributing is a great way to learn about the XRP Ledger (XRPL).
+We're thrilled you're interested and your help is greatly appreciated. Contributing is a great way to learn about the XDV Ledger (XDVL).
 
 ## Repository Layout
 
@@ -20,7 +20,7 @@ You need only to do this once and you have probably already done this if you alr
 
 ### Fork the repository
 1. Create a GitHub account if you haven’t already.  Let’s assume your git account name is username.
-2. Go to https://github.com/ripple/explorer.
+2. Go to https://github.com/xdv/explorer.
 3. Click on the “Watch”, “Star” and “Fork” buttons in the top right.
 4. That last command will fork a new copy of the repo in your personal git area at https://github.com/username/explorer
 
@@ -28,7 +28,7 @@ You need only to do this once and you have probably already done this if you alr
 ```
 $ git clone git@github.com:username/explorer.git --branch staging
 $ cd explorer
-$ git remote add upstream git@github.com:ripple/explorer.git
+$ git remote add upstream git@github.com:xdv/explorer.git
 ```
 
 ### Start work in a new branch.

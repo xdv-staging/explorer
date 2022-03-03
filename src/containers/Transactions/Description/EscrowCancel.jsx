@@ -26,7 +26,7 @@ const EscrowCancel = props => {
         The escrowed amount of
         <b>
           {normalizeAmount(deleted.FinalFields.Amount, language)}
-          <small>XRP</small>
+          <small></small>
         </b>
         was returned to
         <Account account={data.tx.Owner} />
@@ -37,7 +37,7 @@ const EscrowCancel = props => {
           (
           <b>
             {normalizeAmount(deleted.FinalFields.Amount - data.tx.Fee, language)}
-            <small>XRP</small>
+            <small></small>
           </b>{' '}
           {t('escrow_after_transaction_cost')})
         </span>

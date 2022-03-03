@@ -5,9 +5,9 @@ import * as actions from '../actions';
 import * as actionTypes from '../actionTypes';
 import { initialState } from '../reducer';
 import { NOT_FOUND, BAD_REQUEST, SERVER_ERROR } from '../../../shared/utils';
-import moxiosData from './rippledResponses.json';
+import moxiosData from './divvydResponses.json';
 import actNotFound from './actNotFound.json';
-import MockResponse from '../../../test/mockRippledResponse';
+import MockResponse from '../../../test/mockDivvydResponse';
 
 const TEST_ADDRESS = 'rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv';
 const TEST_CURRENCY = 'abc';
@@ -45,7 +45,7 @@ describe('TokenHeader Actions', () => {
     ];
     const store = mockStore({ news: initialState });
     moxios.stubRequest(
-      `/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`,
+      `/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`,
       new MockResponse(moxiosData)
     );
     return store.dispatch(actions.loadTokenState(TEST_CURRENCY, TEST_ADDRESS)).then(() => {
@@ -64,7 +64,7 @@ describe('TokenHeader Actions', () => {
       },
     ];
     const store = mockStore({ news: initialState });
-    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`, {
+    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`, {
       status: SERVER_ERROR,
       response: null,
     });
@@ -73,14 +73,14 @@ describe('TokenHeader Actions', () => {
     });
   });
 
-  it('should dispatch correct actions on ripple address not found', () => {
+  it('should dispatch correct actions on divvy address not found', () => {
     const expectedActions = [
       { type: actionTypes.START_LOADING_ACCOUNT_STATE },
       { type: actionTypes.FINISHED_LOADING_ACCOUNT_STATE },
       { type: actionTypes.ACCOUNT_STATE_LOAD_FAIL, status: NOT_FOUND, error: '' },
     ];
     const store = mockStore({ news: initialState });
-    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_RIPPLED_HOST}`, {
+    moxios.stubRequest(`/api/v1/cors/${process.env.REACT_APP_DIVVYD_HOST}`, {
       status: 200,
       response: { result: actNotFound },
     });
@@ -89,7 +89,7 @@ describe('TokenHeader Actions', () => {
     });
   });
 
-  it('should dispatch correct actions on invalid ripple address', () => {
+  it('should dispatch correct actions on invalid divvy address', () => {
     const expectedActions = [
       { type: actionTypes.ACCOUNT_STATE_LOAD_FAIL, status: BAD_REQUEST, error: '' },
     ];

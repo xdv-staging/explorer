@@ -44,7 +44,7 @@ class Validator extends Component {
     }
     this.fetchData();
 
-    document.title = `Validator ${short} | ${t('xrpl_explorer')}`;
+    document.title = `Validator ${short} | ${t('xdvl_explorer')}`;
 
     analytics(ANALYTIC_TYPES.pageview, {
       title: 'Validator',

@@ -9,7 +9,7 @@ import {
   DATE_OPTIONS,
   CURRENCY_OPTIONS,
   SUCCESSFULL_TRANSACTION,
-  XRP_BASE,
+  _BASE,
   buildFlags,
   buildMemos,
 } from '../shared/transactionUtils';
@@ -65,9 +65,9 @@ class DetailTab extends Component {
 
   renderFee() {
     const { t, data, language } = this.props;
-    const numberOptions = { ...CURRENCY_OPTIONS, currency: 'XRP' };
+    const numberOptions = { ...CURRENCY_OPTIONS, currency: '' };
     const totalCost = data.tx.Fee
-      ? localizeNumber(Number.parseFloat(data.tx.Fee) / XRP_BASE, language, numberOptions)
+      ? localizeNumber(Number.parseFloat(data.tx.Fee) / _BASE, language, numberOptions)
       : null;
     return (
       totalCost && (
@@ -77,7 +77,7 @@ class DetailTab extends Component {
             {t('transaction_consumed_fee')}
             <b>
               <span> {totalCost}</span>
-              <small>XRP</small>
+              <small></small>
             </b>
           </div>
         </div>

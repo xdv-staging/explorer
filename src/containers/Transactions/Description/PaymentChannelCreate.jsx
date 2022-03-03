@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { localizeDate, localizeNumber } from '../../shared/utils';
 import {
   DATE_OPTIONS,
-  RIPPLE_EPOCH,
+  DIVVY_EPOCH,
   normalizeAmount,
   findNode,
 } from '../../shared/transactionUtils';
@@ -12,12 +12,12 @@ import Account from '../../shared/components/Account';
 const PaymentChannelCreate = props => {
   const { t, language, data } = props;
   const cancelAfter = localizeDate(
-    (data.tx.CancelAfter + RIPPLE_EPOCH) * 1000,
+    (data.tx.CancelAfter + DIVVY_EPOCH) * 1000,
     language,
     DATE_OPTIONS
   );
   const expiration = localizeDate(
-    (data.tx.Experiation + RIPPLE_EPOCH) * 1000,
+    (data.tx.Experiation + DIVVY_EPOCH) * 1000,
     language,
     DATE_OPTIONS
   );
@@ -61,7 +61,7 @@ const PaymentChannelCreate = props => {
       <b>
         {' '}
         {normalizeAmount(data.tx.Amount, language)}
-        <small>XRP</small>
+        <small></small>
       </b>
     </div>
   );

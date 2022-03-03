@@ -19,7 +19,7 @@ const Tokens = props => {
 
   const { t, error } = props;
 
-  document.title = `${t('xrpl_explorer')} | ${t('tokens')}`;
+  document.title = `${t('xdvl_explorer')} | ${t('tokens')}`;
 
   useEffect(() => {
     axios

@@ -104,7 +104,7 @@
     "status": "success",
     "type": "response"
   },
-  "XRP": {
+  "XDV": {
     "result": {
       "ledger_hash": "1C1D7A43CD68381590D92DE4B003AFEA70B7066706D85413E80C292E2B3AC2DD",
       "ledger_index": 69145819,

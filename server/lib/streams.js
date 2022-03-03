@@ -1,4 +1,4 @@
-const rippled = require('./rippled');
+const divvyd = require('./divvyd');
 const utils = require('./utils');
 const log = require('./logger')({ name: 'streams' });
 
@@ -37,12 +37,12 @@ const getTotalFees = ledger => {
   ledger.transactions.forEach(tx => {
     totalFees += Number(tx.Fee);
   });
-  return totalFees / utils.XRP_BASE;
+  return totalFees / utils.XDV_BASE;
 };
 
 // fetch full ledger
 const fetchLedger = (ledger, attempts = 0) => {
-  rippled
+  divvyd
     .getLedger({ ledger_hash: ledger.ledger_hash })
     .then(getTotalFees)
     .then(totalFees => {
@@ -111,7 +111,7 @@ module.exports.handleLedger = data => {
   log.info('new ledger', data.ledger_index);
   ledger.close_time = (data.ledger_time + utils.EPOCH_OFFSET) * 1000;
 
-  updateMetrics(data.fee_base / utils.XRP_BASE);
+  updateMetrics(data.fee_base / utils.XDV_BASE);
   fetchLedger(ledger);
 };
 

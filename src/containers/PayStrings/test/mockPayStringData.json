@@ -27,7 +27,7 @@
       }
     },
     {
-      "paymentNetwork": "XRPL",
+      "paymentNetwork": "XDVL",
       "environment": "MAINNET",
       "addressDetailsType": "CryptoAddressDetails",
       "addressDetails": {

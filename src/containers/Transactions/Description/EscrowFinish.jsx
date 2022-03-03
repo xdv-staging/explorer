@@ -26,7 +26,7 @@ const EscrowFinish = props => {
         The escrowed amount of
         <b>
           {normalizeAmount(deleted.FinalFields.Amount, language)}
-          <small>XRP</small>
+          <small></small>
         </b>
         was delivered to
         <Account account={deleted.FinalFields.Destination} />
@@ -37,7 +37,7 @@ const EscrowFinish = props => {
           (
           <b>
             {normalizeAmount(deleted.FinalFields.Amount - data.tx.Fee, language)}
-            <small>XRP</small>
+            <small></small>
           </b>{' '}
           {t('escrow_after_transaction_cost')})
         </span>

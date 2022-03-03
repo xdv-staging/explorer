@@ -8,7 +8,7 @@ import './nomatch.css';
 class NoMatch extends Component {
   componentDidMount() {
     const { t, title, hints } = this.props;
-    document.title = `${t('xrpl_explorer')} | ${t(title)}`;
+    document.title = `${t('xdvl_explorer')} | ${t(title)}`;
     analytics(ANALYTIC_TYPES.pageview, { title: `${title} -- ${hints.join(', ')}`, path: '/404' });
   }
 

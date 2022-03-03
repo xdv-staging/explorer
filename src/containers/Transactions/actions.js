@@ -1,4 +1,4 @@
-import { getTransaction } from '../../rippled';
+import { getTransaction } from '../../divvyd';
 import { analytics, ANALYTIC_TYPES, BAD_REQUEST, HASH_REGEX } from '../shared/utils';
 import * as actionTypes from './actionTypes';
 

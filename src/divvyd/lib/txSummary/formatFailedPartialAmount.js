@@ -6,6 +6,6 @@ module.exports = d =>
         amount: 0,
       }
     : {
-        currency: 'XRP',
+        currency: '',
         amount: 0,
       };

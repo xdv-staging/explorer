@@ -3,7 +3,7 @@
   "ledger_hash": "4253E4C67DD89F230CF25334BDD7406C312F90ADEEDA3BBEA5EB3AD0F4FCF9C3",
   "parent_hash": "821CBBFE2C275C57C735F6F938A8CBBD2DC23877E8B56F2339618BEA995535C9",
   "close_time": "2019-02-14T21:41:01Z",
-  "total_xrp": 99991690980.78883,
+  "total_xdv": 99991690980.78883,
   "total_fees": 0.000171,
   "transactions": [
     {
@@ -28,7 +28,7 @@
       "sequence": 434837,
       "details": {
         "gets": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 1826.283419
         },
         "pays": {
@@ -49,7 +49,7 @@
       "sequence": 434838,
       "details": {
         "gets": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 387.901997
         },
         "pays": {
@@ -70,7 +70,7 @@
       "sequence": 434839,
       "details": {
         "gets": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 1383.168304
         },
         "pays": {
@@ -91,7 +91,7 @@
       "sequence": 434840,
       "details": {
         "gets": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 1890.602253
         },
         "pays": {
@@ -143,7 +143,7 @@
       "sequence": 2500103,
       "details": {
         "gets": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 2032.42931
         },
         "pays": {
@@ -189,7 +189,7 @@
           "amount": 4900
         },
         "convert": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 4900
         }
       }
@@ -208,7 +208,7 @@
           "amount": 10000
         },
         "convert": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 10000
         }
       }
@@ -227,7 +227,7 @@
           "amount": 1025
         },
         "convert": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 1025
         }
       }
@@ -263,7 +263,7 @@
           "amount": 10000
         },
         "convert": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 10000
         }
       }
@@ -282,7 +282,7 @@
           "amount": 2870
         },
         "convert": {
-          "currency": "XRP",
+          "currency": "XDV",
           "amount": 2870
         }
       }

@@ -36,7 +36,7 @@ describe('App container', () => {
   it('renders home', () => {
     const wrapper = createWrapper();
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual('xrpl_explorer | ledgers');
+      expect(document.title).toEqual('xdvl_explorer | ledgers');
       expect(wrapper.find('.ledgers').length).toBe(1);
       wrapper.unmount();
     });
@@ -45,7 +45,7 @@ describe('App container', () => {
   it('renders ledger explorer page', () => {
     const wrapper = createWrapper({}, '/ledgers');
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual('xrpl_explorer | ledgers');
+      expect(document.title).toEqual('xdvl_explorer | ledgers');
       wrapper.unmount();
     });
   });
@@ -53,7 +53,7 @@ describe('App container', () => {
   it('renders not found page', () => {
     const wrapper = createWrapper({}, '/zzz');
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual('xrpl_explorer | 404_default_title');
+      expect(document.title).toEqual('xdvl_explorer | 404_default_title');
       wrapper.unmount();
     });
   });
@@ -62,7 +62,7 @@ describe('App container', () => {
     const id = 12345;
     const wrapper = createWrapper({}, `/ledgers/${id}`);
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual(`xrpl_explorer | ledger ${id}`);
+      expect(document.title).toEqual(`xdvl_explorer | ledger ${id}`);
       wrapper.unmount();
     });
   });
@@ -71,7 +71,7 @@ describe('App container', () => {
     const id = 12345;
     const wrapper = createWrapper({}, `/transactions/${id}`);
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual(`xrpl_explorer | transaction_short ${id}...`);
+      expect(document.title).toEqual(`xdvl_explorer | transaction_short ${id}...`);
       wrapper.unmount();
     });
   });
@@ -80,7 +80,7 @@ describe('App container', () => {
     const id = 'rZaChweF5oXn';
     const wrapper = createWrapper({}, `/accounts/${id}#ssss`);
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual(`xrpl_explorer | ${id}...`);
+      expect(document.title).toEqual(`xdvl_explorer | ${id}...`);
       wrapper.unmount();
     });
   });
@@ -89,7 +89,7 @@ describe('App container', () => {
     const id = 12345;
     const wrapper = createWrapper({}, `/#/transactions/${id}`);
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual(`xrpl_explorer | transaction_short ${id}...`);
+      expect(document.title).toEqual(`xdvl_explorer | transaction_short ${id}...`);
       wrapper.unmount();
     });
   });
@@ -98,7 +98,7 @@ describe('App container', () => {
     const id = 'rZaChweF5oXn';
     const wrapper = createWrapper({}, `/#/graph/${id}#ssss`);
     return new Promise(r => setTimeout(r, 200)).then(() => {
-      expect(document.title).toEqual(`xrpl_explorer | ${id}...`);
+      expect(document.title).toEqual(`xdvl_explorer | ${id}...`);
       wrapper.unmount();
     });
   });

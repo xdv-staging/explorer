@@ -101,7 +101,7 @@ export const AccountTxTable = props => {
   const renderListContents = () => {
     const { t, loading, currencySelected } = props;
     let processedTransactions = transactions;
-    if (currencySelected !== 'XRP') {
+    if (currencySelected !== 'XDV') {
       processedTransactions = transactions.filter(
         tx =>
           !currencySelected ||

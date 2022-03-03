@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-const BASE = 'xrpl-debug';
+const BASE = 'xdvl-debug';
 const COLOURS = {
   trace: 'lightblue',
   info: 'blue',

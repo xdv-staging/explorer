@@ -18,7 +18,7 @@ const PaymentChannelClaim = props => {
     close,
     deleted,
   } = data.instructions;
-  const options = { ...CURRENCY_OPTIONS, currency: 'XRP' };
+  const options = { ...CURRENCY_OPTIONS, currency: '' };
   const amt = amount ? localizeNumber(amount.amount, language, options) : null;
   const claimAmt = claimed ? localizeNumber(claimed.amount, language, options) : null;
   const totalAmt = total ? localizeNumber(total.amount, language, options) : null;

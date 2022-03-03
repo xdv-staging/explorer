@@ -1,11 +1,11 @@
 import logger from './lib/logger';
 import { Error } from './lib/utils';
-import { getServerInfo } from './lib/rippled';
+import { getServerInfo } from './lib/divvyd';
 
 const log = logger({ name: 'serverInfo' });
 
 const getQuorum = () => {
-  log.info(`fetching server_info from rippled`);
+  log.info(`fetching server_info from divvyd`);
 
   return getServerInfo()
     .then(result => {

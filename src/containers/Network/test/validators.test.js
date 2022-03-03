@@ -45,7 +45,7 @@ describe('Nodes Page container', () => {
 
   it('receives live validation', async () => {
     const server = new WS(
-      `wss://${process.env.REACT_APP_RIPPLED_HOST}:${process.env.REACT_APP_RIPPLED_WS_PORT}`,
+      `wss://${process.env.REACT_APP_DIVVYD_HOST}:${process.env.REACT_APP_DIVVYD_WS_PORT}`,
       { jsonProtocol: true }
     );
     const wrapper = createWrapper();

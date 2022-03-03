@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import renderAccountRoot from './AccountRoot';
 import renderDirectoryNode from './DirectoryNode';
 import renderOffer from './Offer';
-import renderRippleState from './RippleState';
+import renderDivvyState from './DivvyState';
 import renderPayChannel from './PayChannel';
 import { groupAffectedNodes } from '../../shared/transactionUtils';
 
@@ -23,8 +23,8 @@ class TransactionMeta extends Component {
           return renderDirectoryNode(t, action, node, index, tx);
         case 'Offer':
           return renderOffer(t, language, action, node, index, tx);
-        case 'RippleState':
-          return renderRippleState(t, language, action, node, index, tx);
+        case 'DivvyState':
+          return renderDivvyState(t, language, action, node, index, tx);
         case 'PayChannel':
           return renderPayChannel(t, language, action, node, index, tx);
         default:

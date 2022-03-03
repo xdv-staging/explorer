@@ -6,7 +6,7 @@ import { NOT_FOUND, BAD_REQUEST, SERVER_ERROR } from '../../shared/utils';
 import { initialState } from '../reducer';
 import * as actions from '../actions';
 import * as actionTypes from '../actionTypes';
-import { summarizeLedger } from '../../../rippled/lib/utils';
+import { summarizeLedger } from '../../../divvyd/lib/utils';
 import ledgerNotFound from './ledgerNotFound.json';
 
 describe('Ledger actions', () => {

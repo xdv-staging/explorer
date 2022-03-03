@@ -5,8 +5,8 @@ import { BAD_REQUEST } from '../../shared/utils';
 import { initialState } from '../reducer';
 import * as actions from '../actions';
 import * as actionTypes from '../actionTypes';
-import OfferCreateData from './mock_data/rippledOfferCreate.json';
-import { formatTransaction } from '../../../rippled/lib/utils';
+import OfferCreateData from './mock_data/divvydOfferCreate.json';
+import { formatTransaction } from '../../../divvyd/lib/utils';
 
 describe('Transaction actions', () => {
   const middlewares = [thunk];

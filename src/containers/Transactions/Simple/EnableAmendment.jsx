@@ -5,7 +5,7 @@ import { createHash } from 'crypto';
 import { localizeDate } from '../../shared/utils';
 
 const cachedAmendmentIDs = {};
-let cachedRippledVersions = {};
+let cachedDivvydVersions = {};
 
 const states = {
   loading: 'Loading',
@@ -27,7 +27,7 @@ const DATE_OPTIONS = {
 class EnableAmendment extends Component {
   static async fetchAmendmentNames() {
     const response = await fetch(
-      'https://raw.githubusercontent.com/ripple/rippled/develop/src/ripple/protocol/impl/Feature.cpp'
+      'https://raw.githubusercontent.com/xdv-staging/divvyd/develop/src/divvy/protocol/impl/Feature.cpp'
     );
     const text = await response.text();
 
@@ -65,9 +65,9 @@ class EnableAmendment extends Component {
     return cachedAmendmentIDs[id];
   }
 
-  static async fetchMinRippledVersions() {
+  static async fetchMinDivvydVersions() {
     const response = await fetch(
-      'https://raw.githubusercontent.com/ripple/xrpl-dev-portal/3b07e8295d0eebed07aeb0a5d40289ac91d2b5c9/content/concepts/consensus-network/amendments/known-amendments.md'
+      'https://raw.githubusercontent.com/xdv-staging/xdvl-dev-portal/3b07e8295d0eebed07aeb0a5d40289ac91d2b5c9/content/concepts/consensus-network/amendments/known-amendments.md'
     );
     const text = await response.text();
     const mapping = {};
@@ -83,12 +83,12 @@ class EnableAmendment extends Component {
     return mapping;
   }
 
-  static async getRippledVersion(name) {
-    if (cachedRippledVersions[name]) {
-      return cachedRippledVersions[name];
+  static async getDivvydVersion(name) {
+    if (cachedDivvydVersions[name]) {
+      return cachedDivvydVersions[name];
     }
-    cachedRippledVersions = await this.fetchMinRippledVersions();
-    return cachedRippledVersions[name];
+    cachedDivvydVersions = await this.fetchMinDivvydVersions();
+    return cachedDivvydVersions[name];
   }
 
   constructor(props) {
@@ -116,7 +116,7 @@ class EnableAmendment extends Component {
     this.state = {
       amendmentName: states.loading,
       amendmentStatus: status,
-      minRippledVersion: states.loading,
+      minDivvydVersion: states.loading,
       expectedDate: expected,
     };
   }
@@ -125,21 +125,21 @@ class EnableAmendment extends Component {
     const { data } = this.props;
     EnableAmendment.nameOfAmendmentID(data.instructions.amendment).then(name => {
       if (name) {
-        EnableAmendment.getRippledVersion(name).then(rippledVersion => {
-          if (rippledVersion) {
-            this.setState({ amendmentName: name, minRippledVersion: rippledVersion });
+        EnableAmendment.getDivvydVersion(name).then(divvydVersion => {
+          if (divvydVersion) {
+            this.setState({ amendmentName: name, minDivvydVersion: divvydVersion });
           } else {
-            this.setState({ amendmentName: name, minRippledVersion: states.unknown });
+            this.setState({ amendmentName: name, minDivvydVersion: states.unknown });
           }
         });
       } else {
-        this.setState({ amendmentName: states.unknown, minRippledVersion: states.unknown });
+        this.setState({ amendmentName: states.unknown, minDivvydVersion: states.unknown });
       }
     });
   }
 
   render() {
-    const { amendmentName, amendmentStatus, minRippledVersion, expectedDate } = this.state;
+    const { amendmentName, amendmentStatus, minDivvydVersion, expectedDate } = this.state;
     return (
       <>
         {[
@@ -150,14 +150,14 @@ class EnableAmendment extends Component {
           <div className="row">
             <div className="label">Amendment Status </div>
             <div className="value">
-              <a href="https://xrpl.org/enableamendment.html#enableamendment-flags">
+              <a href="https://xdv.io/enableamendment.html#enableamendment-flags">
                 {amendmentStatus}
               </a>
             </div>
           </div>,
           <div className="row">
             <div className="label">Introduced In </div>
-            <div className="value">{minRippledVersion}</div>
+            <div className="value">{minDivvydVersion}</div>
           </div>,
           amendmentStatus === 'Got Majority' ? (
             <div className="row">

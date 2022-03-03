@@ -14,7 +14,7 @@ import { localizeNumber } from '../../shared/utils';
 
 const CURRENCY_OPTIONS = {
   style: 'currency',
-  currency: 'XRP',
+  currency: 'XDV',
   minimumFractionDigits: 2,
   maximumFractionDigits: 6,
 };
@@ -289,7 +289,7 @@ AccountHeader.propTypes = {
   accountId: PropTypes.string.isRequired,
   data: PropTypes.shape({
     balances: PropTypes.shape({
-      XRP: PropTypes.number,
+      XDV: PropTypes.number,
     }),
     paychannels: PropTypes.shape({
       total_available: PropTypes.string,

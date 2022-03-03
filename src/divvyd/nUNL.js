@@ -1,14 +1,14 @@
-import { encodeNodePublic } from 'ripple-address-codec';
+import { encodeNodePublic } from 'divvy-address-codec';
 
-import { getNegativeUNL as getRippledNegativeUNL } from './lib/rippled';
+import { getNegativeUNL as getDivvydNegativeUNL } from './lib/divvyd';
 import logger from './lib/logger';
 
 const log = logger({ name: 'nunl' });
 
 const getNegativeUNL = () => {
-  log.info(`getting nUNL from rippled`);
+  log.info(`getting nUNL from divvyd`);
 
-  return getRippledNegativeUNL()
+  return getDivvydNegativeUNL()
     .then(result => {
       if (result === undefined || result.length === 0) return [];
 

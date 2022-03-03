@@ -18,8 +18,8 @@ const DEFAULTS = {
   nUnl: [],
 };
 
-const renderXRP = (d, language) => {
-  const options = { ...CURRENCY_OPTIONS, currency: 'XRP' };
+const renderXDV = (d, language) => {
+  const options = { ...CURRENCY_OPTIONS, currency: 'XDV' };
   return localizeNumber(d, language, options);
 };
 
@@ -79,7 +79,7 @@ class LedgerMetrics extends Component {
         let content = null;
         let className = 'label';
         if (key.includes('fee') && !isNaN(data[key])) {
-          content = renderXRP(data[key], language);
+          content = renderXDV(data[key], language);
         } else if (key === 'ledger_interval' && data[key] !== '--') {
           content = `${data[key]} ${t('seconds_short')}`;
         } else if (key === 'nUnl' && data[key].length === 0) {
@@ -90,7 +90,7 @@ class LedgerMetrics extends Component {
           return (
             <a
               key={`link ${key}`}
-              href="https://xrpl.org/negative-unl.html"
+              href="https://xdv.io/negative-unl.html"
               target="_blank"
               rel="noopener noreferrer"
             >

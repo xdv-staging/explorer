@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Trans } from 'react-i18next';
 import { localizeDate } from '../../shared/utils';
-import { DATE_OPTIONS, RIPPLE_EPOCH, normalizeAmount } from '../../shared/transactionUtils';
+import { DATE_OPTIONS, DIVVY_EPOCH, normalizeAmount } from '../../shared/transactionUtils';
 import Account from '../../shared/components/Account';
 
 const EscrowCreate = props => {
   const { t, language, data } = props;
   const cancelAfter = localizeDate(
-    (data.tx.CancelAfter + RIPPLE_EPOCH) * 1000,
+    (data.tx.CancelAfter + DIVVY_EPOCH) * 1000,
     language,
     DATE_OPTIONS
   );
   const finishAfter = localizeDate(
-    (data.tx.FinishAfter + RIPPLE_EPOCH) * 1000,
+    (data.tx.FinishAfter + DIVVY_EPOCH) * 1000,
     language,
     DATE_OPTIONS
   );
@@ -53,7 +53,7 @@ const EscrowCreate = props => {
       <b>
         {' '}
         {normalizeAmount(data.tx.Amount, language)}
-        <small>XRP</small>
+        <small></small>
       </b>
     </div>
   );

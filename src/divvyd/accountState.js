@@ -8,21 +8,21 @@ import {
   isValidClassicAddress,
   isValidXAddress,
   xAddressToClassicAddress,
-} from 'ripple-address-codec';
+} from 'divvy-address-codec';
 import {
   getAccountInfo,
   getAccountEscrows,
   getAccountPaychannels,
   getBalances,
   getServerInfo,
-} from './lib/rippled';
+} from './lib/divvyd';
 import logger from './lib/logger';
 import { formatAccountInfo, formatSignerList } from './lib/utils';
 
 const log = logger({ name: 'account balances' });
 
 const formatResults = (info, data) => {
-  const balances = { XRP: Number(info.Balance) / 1000000 };
+  const balances = { : Number(info.Balance) / 1000000 };
   const { assets = {}, obligations = {} } = data;
 
   Object.keys(obligations).forEach(currency => {

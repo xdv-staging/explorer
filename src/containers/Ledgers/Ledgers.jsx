@@ -127,7 +127,7 @@ class Ledgers extends Component {
 
   renderFees = d => {
     const { t, language } = this.props;
-    const options = { ...CURRENCY_OPTIONS, currency: 'XRP' };
+    const options = { ...CURRENCY_OPTIONS, currency: 'XDV' };
     const amount = localizeNumber(d, language, options);
     return d ? (
       <div className="fees">

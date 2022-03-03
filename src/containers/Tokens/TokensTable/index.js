@@ -81,7 +81,7 @@ const TokensTable = props => {
               ? tokenInfo.exchangeRate * tokenInfo.obligations
               : 0,
             lng,
-            'XRP'
+            ''
           )}`}
         </td>
       </tr>

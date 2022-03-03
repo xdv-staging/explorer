@@ -10,7 +10,7 @@ import Menu from './Menu';
 import MobileMenu from './MobileMenu';
 import Banner from './Banner';
 import Search from './Search';
-import { ReactComponent as Logo } from '../shared/images/XRPLedger.svg';
+import { ReactComponent as Logo } from '../shared/images/XDVLedger.svg';
 import { ReactComponent as ArrowIcon } from '../shared/images/down_arrow.svg';
 import { ReactComponent as CheckIcon } from '../shared/images/checkmark.svg';
 import './header.css';
@@ -115,7 +115,7 @@ class Header extends Component {
           <div className="topbar">
             <div className="element">
               <Link to="/">
-                <Logo className="logo" alt={t('xrpl_explorer')} />
+                <Logo className="logo" alt={t('xdvl_explorer')} />
               </Link>
             </div>
             <div className="element">

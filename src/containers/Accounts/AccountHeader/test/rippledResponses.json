@@ -45,10 +45,10 @@
       "info": {
         "validated_ledger": {
           "age": 1,
-          "base_fee_xrp": 0.00001,
+          "base_fee_xdv": 0.00001,
           "hash": "EA01E248FCA5CFD33A3393DA5EBCCD9219BA8DB6AF6DC28A3B0A968604F46A76",
-          "reserve_base_xrp": 10,
-          "reserve_inc_xrp": 2,
+          "reserve_base_xdv": 10,
+          "reserve_inc_xdv": 2,
           "seq": 24402729
         },
         "validation_quorum": 5

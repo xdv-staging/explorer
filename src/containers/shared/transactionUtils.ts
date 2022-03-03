@@ -1,8 +1,8 @@
 import { localizeNumber } from './utils';
 
-export const RIPPLE_EPOCH = 946684800;
+export const DIVVY_EPOCH = 946684800;
 export const SUCCESSFULL_TRANSACTION = 'tesSUCCESS';
-export const XRP_BASE = 1000000;
+export const XDV_BASE = 1000000;
 export const hexMatch = new RegExp('^(0x)?[0-9A-Fa-f]+$');
 export const ACCOUNT_ZERO = 'rrrrrrrrrrrrrrrrrrrrrhoLvTp';
 
@@ -11,7 +11,7 @@ export const TX_FLAGS: Record<string, Record<number, string>> = {
     0x80000000: 'tfFullyCanonicalSig',
   },
   Payment: {
-    0x00010000: 'tfNoDirectRipple',
+    0x00010000: 'tfNoDirectDivvy',
     0x00020000: 'tfPartialPayment',
     0x00040000: 'tfLimitQuality',
   },
@@ -20,8 +20,8 @@ export const TX_FLAGS: Record<string, Record<number, string>> = {
     0x00020000: 'tfOptionalDestTag',
     0x00040000: 'tfRequireAuth',
     0x00080000: 'tfOptionalAuth',
-    0x00100000: 'tfDisallowXRP',
-    0x00200000: 'tfAllowXRP',
+    0x00100000: 'tfDisallowXDV',
+    0x00200000: 'tfAllowXDV',
   },
   OfferCreate: {
     0x00010000: 'tfPassive',
@@ -31,8 +31,8 @@ export const TX_FLAGS: Record<string, Record<number, string>> = {
   },
   TrustSet: {
     0x00010000: 'tfSetAuth',
-    0x00020000: 'tfSetNoRipple',
-    0x00040000: 'tfClearNoRipple',
+    0x00020000: 'tfSetNoDivvy',
+    0x00040000: 'tfClearNoDivvy',
     0x00100000: 'tfSetFreeze',
     0x00200000: 'tfClearFreeze',
   },
@@ -44,12 +44,12 @@ export const TX_FLAGS: Record<string, Record<number, string>> = {
 
 export const ACCOUNT_FLAGS: Record<number, string> = {
   9: 'asfDepositAuth',
-  8: 'asfDefaultRipple',
+  8: 'asfDefaultDivvy',
   7: 'asfGlobalFreeze',
   6: 'asfNoFreeze',
   5: 'asfAccountTxnID',
   4: 'asfDisableMaster',
-  3: 'asfDisallowXRP',
+  3: 'asfDisallowXDV',
   2: 'asfRequireAuth',
   1: 'asfRequireDest',
 };
@@ -69,7 +69,7 @@ export const CURRENCY_ORDER = [
   'BTC',
   'XAG',
   'XAU',
-  'XRP',
+  'XDV',
 ];
 
 export const CURRENCY_OPTIONS = {
@@ -206,8 +206,8 @@ export function normalizeAmount(
   amount: IssuedCurrencyAmount | number,
   language = 'en-US'
 ): string | null {
-  const currency = typeof amount === 'object' ? amount.currency : 'XRP';
-  const value = typeof amount === 'object' ? amount.value : amount / XRP_BASE;
+  const currency = typeof amount === 'object' ? amount.currency : 'XDV';
+  const value = typeof amount === 'object' ? amount.value : amount / XDV_BASE;
   const numberOption = { ...CURRENCY_OPTIONS, currency };
   return localizeNumber(value, language, numberOption);
 }
